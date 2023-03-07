@@ -1,6 +1,6 @@
 <div align = center>
 
-![Image de l'application](doc/Images/Banner-Scor_It-BlueVersion.png)
+<img src="doc/Images/Banner-Scor_It.png" width="1000">
 
 </div>
 
