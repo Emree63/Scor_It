@@ -1,4 +1,8 @@
-# Scor_It
+<div align = center>
+
+![Image de l'application](doc/Images/Banner-Scor_It-BlueVersion.png)
+
+</div>
 
 <div align = center>
 
@@ -22,6 +26,7 @@ IDE : https://developer.android.com/studio (Android Studio)
 ## Technicien en charge de l'application
 
 ⚙️ Emre KARTAL
+
 ⚙️ Baptiste MARCEL
 
 <div align = center>
