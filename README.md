@@ -25,7 +25,7 @@ IDE : https://developer.android.com/studio (Android Studio)
 
 ## :bookmark_tabs: Fonctionnement
 
-### Diagramme de classes du modèle
+### Diagramme de classes du modèle :
 
 ```plantuml
 @startuml
@@ -57,7 +57,6 @@ abstract class Personne {
     -dateOfBirth: Date
     -nationality: String
 
-    +duration() : Int
 }
 
 class Staff {
@@ -132,7 +131,7 @@ Competition --> "-currentSeason" Season
 @enduml
 ```
 
-### Diagramme de classes des interfaces et classes de gestion de l'accées aux données
+### Diagramme de classes des interfaces et classes de gestion de l'accées aux données :
 
 ```plantuml
 @startuml
