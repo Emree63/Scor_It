@@ -129,8 +129,6 @@ Team --> "-area" Area
 Competition --> "-area" Area
 Competition --> "-currentSeason" Season
 
-}
-
 @enduml
 ```
 
@@ -195,8 +193,6 @@ DataManager --> "-teamsMgr" TeamsManager
 
 ApiManager --|> DataManager
 StubManager --|> DataManager
-
-}
 
 @enduml
 ```
