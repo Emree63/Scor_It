@@ -11,7 +11,7 @@ steps:
     image: openjdk:8-jdk
     environment:
       SONAR_TOKEN:
-        from_secret: SONAR_TOKEN
+        from_secret: SECRET_TOKEN
     settings:
       sources: ./src/
     commands:
