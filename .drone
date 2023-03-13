@@ -1,0 +1,19 @@
+kind: pipeline
+type: docker
+name: Scor_It
+
+trigger:
+  event:
+    - push
+
+steps:
+  - name: code-analysis
+    image: openjdk:8-jdk
+    environment:
+      SONAR_TOKEN:
+        from_secret: SONAR_TOKEN
+    settings:
+      sources: ./src/
+    commands:
+      - sonar-scanner -D sonar.projectKey=Scor_It -D sonar.sources=. -D sonar.host.url=https://codefirst.iut.uca.fr/sonar
+    depends_on: [ app-build ]
