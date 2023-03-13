@@ -6,7 +6,7 @@ class Competition(
     val code: String,
     val type: String,
     val emblem: String,
-    val currentSeason: season,
+    val currentSeason: Season,
     val area: Area
 ) {
 }

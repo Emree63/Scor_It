@@ -2,7 +2,7 @@ package uca.iut.clermont.model
 
 import java.util.Date
 
-class season(
+class Season(
     val id: Int,
     val startDate: Date,
     val endDate: Date,
