@@ -5,7 +5,7 @@ name: Scor_It
 trigger:
   event:
     - push
-
+ 
 steps:
   - name: build
     image: gradle:latest
