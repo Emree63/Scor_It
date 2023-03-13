@@ -16,4 +16,3 @@ steps:
       sources: ./src/
     commands:
       - sonar-scanner -D sonar.projectKey=Scor_It -D sonar.sources=. -D sonar.host.url=https://codefirst.iut.uca.fr/sonar
-    depends_on: [ app-build ]
