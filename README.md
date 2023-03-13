@@ -204,10 +204,15 @@ StubManager --|> DataManager
 
 ## :construction_worker: Technicien en charge de l'application
 
-⚙️ Emre KARTAL
+- Emre KARTAL : Emre.KARTAL@etu.uca.fr
+- Baptiste MARCEL : Baptiste.MARCEL@etu.uca.fr
+<div align="center">
+<a href = "https://codefirst.iut.uca.fr/git/emre.kartal">
+<img src="https://codefirst.iut.uca.fr/git/avatars/402cf312e853192f42c0135a888725c2?size=870" width="50" >
+</a>
+<a href = "https://codefirst.iut.uca.fr/git/david.d_almeida">
+<img src="https://codefirst.iut.uca.fr/git/avatars/6b1f2a8b8f636d8f4d315b060075578f?size=870" width="50" >
+</a>
 
-⚙️ Baptiste MARCEL
-
-<div align = center>
 © IUT - Auvergne
 </div>
