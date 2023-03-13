@@ -7,11 +7,17 @@ trigger:
     - push
 
 steps:
-  - name: build-and-test
-    image: openjdk:8-jdk
+  - name: build
+    image: gradle:latest
     commands:
       - cd ./src/
-      - ./gradlew assembleDebug test
+      - ./gradlew assembleDebug
+
+  - name: test
+    image: openjdk:latest
+    commands:
+      - cd ./src/
+      - ./gradlew test
   - name: code-analysis
     image: openjdk:latest
     environment:
