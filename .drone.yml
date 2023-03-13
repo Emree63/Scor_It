@@ -10,6 +10,7 @@ steps:
   - name: build
     image: gradle:jdk11
     commands:
+      - cd ./src/
       - gradle build
   - name: code-analysis
     image: openjdk:8-jdk
