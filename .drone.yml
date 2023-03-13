@@ -7,8 +7,12 @@ trigger:
     - push
 
 steps:
-  - name: code-analysis
+  - name: build-and-test
     image: openjdk:8-jdk
+    commands:
+      - ./gradlew assembleDebug test
+  - name: code-analysis
+    image: openjdk:latest
     environment:
       SONAR_TOKEN:
         from_secret: SECRET_TOKEN
