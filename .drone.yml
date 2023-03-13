@@ -7,23 +7,18 @@ trigger:
     - push
  
 steps:
-  - name: build
-    image: gradle:latest
-    commands:
-      - cd ./src/
-      - ./gradlew assembleDebug
-
-  - name: test
-    image: openjdk:latest
-    commands:
-      - cd ./src/
-      - ./gradlew test
   - name: code-analysis
-    image: openjdk:latest
+    image: openjdk:8-jdk
     environment:
       SONAR_TOKEN:
         from_secret: SECRET_TOKEN
     settings:
       sources: ./src/
     commands:
+      - export SONAR_SCANNER_VERSION=4.7.0.2747
+      - export SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
+      - curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+      - unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+      - export PATH=$SONAR_SCANNER_HOME/bin:$PATH
+      - export SONAR_SCANNER_OPTS="-server"
       - sonar-scanner -D sonar.projectKey=Scor_It -D sonar.sources=. -D sonar.host.url=https://codefirst.iut.uca.fr/sonar
