@@ -9,9 +9,10 @@
 ---
 
 &nbsp; ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-&nbsp; ![XML](https://img.shields.io/badge/XML-000?style=for-the-badge&logoColor=white&color=yellow&textColor=white)
 &nbsp; ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white)
-<br/>
+&nbsp; ![Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&color=white&logoColor=green)
+&nbsp; ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white)
+
 [![Code Smells](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Scor_It&metric=code_smells&token=f19f43142bada43a272cd7bce342e340e1298f15)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Scor_It)
 [![Maintainability Rating](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Scor_It&metric=sqale_rating&token=f19f43142bada43a272cd7bce342e340e1298f15)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Scor_It)
 [![Quality Gate Status](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Scor_It&metric=alert_status&token=f19f43142bada43a272cd7bce342e340e1298f15)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Scor_It)
