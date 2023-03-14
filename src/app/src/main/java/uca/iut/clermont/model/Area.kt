@@ -6,5 +6,4 @@ class Area(
     val code: String,
     val flag: String,
     val parentArea: String
-) {
-}
+)

@@ -10,5 +10,4 @@ abstract class Personne(
     val dateOfBirth: Date,
     val nationality: String,
     val contract: Contract
-) {
-}
+)

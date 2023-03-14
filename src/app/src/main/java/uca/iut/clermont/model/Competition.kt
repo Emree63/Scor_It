@@ -8,5 +8,4 @@ class Competition(
     val emblem: String,
     val currentSeason: Season,
     val area: Area
-) {
-}
+)

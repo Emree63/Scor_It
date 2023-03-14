@@ -8,5 +8,4 @@ class Season(
     val endDate: Date,
     val currentMatchday: Int,
     val winner: Int
-) {
-}
+)

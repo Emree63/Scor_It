@@ -12,7 +12,6 @@ class Team(
     val area: Area,
     val venue: String,
     val coach: Coach,
-    val staff: Staff,
+    val staff: List<Staff>,
     val squads: List<Player>
-) {
-}
+)
