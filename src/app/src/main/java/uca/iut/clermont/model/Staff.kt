@@ -10,5 +10,4 @@ class Staff(
     dateOfBirth: Date,
     nationality: String,
     contract: Contract
-) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract) {
-}
+) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract)

@@ -12,5 +12,4 @@ class Player(
     contract: Contract,
     val position: String,
     val shirtNumber: Int
-) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract) {
-}
+) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract)
