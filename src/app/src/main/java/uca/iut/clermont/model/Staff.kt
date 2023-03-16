@@ -1,5 +1,6 @@
 package uca.iut.clermont.model
 
+import java.util.Calendar
 import java.util.Date
 
 class Staff(
@@ -7,7 +8,7 @@ class Staff(
     firstName: String,
     lastName: String,
     name: String,
-    dateOfBirth: Date,
+    dateOfBirth: Calendar,
     nationality: String,
     contract: Contract
 ) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract)

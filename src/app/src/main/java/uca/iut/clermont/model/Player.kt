@@ -7,7 +7,7 @@ class Player(
     firstName: String,
     lastName: String,
     name: String,
-    dateOfBirth: Date,
+    dateOfBirth: Calendar,
     nationality: String,
     contract: Contract,
     val position: String,

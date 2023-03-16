@@ -4,11 +4,11 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class Contract(
-    val start: Date,
-    val until: Date
+    val start: Calendar,
+    val until: Calendar
 ) {
     fun duration(): Int {
-        val diffInMillies = until.time - start.time
-        return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS).toInt()
+        val diffInMillis = until.timeInMillis - start.timeInMillis
+        return TimeUnit.DAYS.convert(diffInMillis, TimeUnit.MILLISECONDS).toInt()
     }
 }

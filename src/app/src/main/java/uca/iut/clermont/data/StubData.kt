@@ -9,7 +9,7 @@ import TeamsManager
 import uca.iut.clermont.model.*
 import java.util.*
 
-class StubData: DataManager() {
+class StubData : DataManager() {
     override val areaMgr: AreaManager = StubAreaManager(this)
     override val peopleMgr: PeopleManager = StubPeopleManager(this)
     override val matchesMgr: MatchesManager = StubMatchesManager()
@@ -21,27 +21,195 @@ class StubData: DataManager() {
         Area(2, "Spain", "ESP", "https://crests.football-data.org/760.svg", "Europe"),
         Area(3, "Brazil", "BRA", "https://crests.football-data.org/764.svg", "South America"),
         Area(4, "Mexico", "Mex", "https://crests.football-data.org/mexico.svg", "North America"),
-        Area(5, "Australia", "AUS", "https://australie-voyage.fr/wp-content/uploads/2020/08/Drapeau-australien.jpg", "Oceania")
+        Area(
+            5,
+            "Australia",
+            "AUS",
+            "https://australie-voyage.fr/wp-content/uploads/2020/08/Drapeau-australien.jpg",
+            "Oceania"
+        )
     )
 
     private val peopleList = listOf(
-        Player(1, "Lionel", "Messi", "L. Messi", Date(1987, 6, 24), "Argentina", Contract(Date(2020, 6, 1), Date(2025, 6, 1)), "Forward", 10),
-        Player(2, "Cristiano", "Ronaldo", "C. Ronaldo", Date(1985, 2, 5), "Portugal", Contract(Date(2020, 7, 1), Date(2024, 7, 1)), "Forward", 7),
-        Player(3, "Neymar", "Jr", "Neymar", Date(1992, 2, 5), "Brazil", Contract(Date(2021, 1, 1), Date(2026, 1, 1)), "Forward", 10),
-        Player(4, "Kylian", "Mbappe", "K. Mbappe", Date(1998, 12, 20), "France", Contract(Date(2022, 1, 1), Date(2027, 1, 1)), "Forward", 7),
-        Player(5, "Mohamed", "Salah", "M. Salah", Date(1992, 6, 15), "Egypt", Contract(Date(2021, 7, 1), Date(2025, 7, 1)), "Forward", 11),
-        Player(6, "Kevin", "De Bruyne", "K. De Bruyne", Date(1991, 6, 28), "Belgium", Contract(Date(2021, 8, 1), Date(2026, 8, 1)), "Midfielder", 17),
-        Player(7, "Robert", "Lewandowski", "R. Lewandowski", Date(1988, 8, 21), "Poland", Contract(Date(2021, 1, 1), Date(2024, 1, 1)), "Forward", 9),
-        Player(8, "Sadio", "Mane", "S. Mane", Date(1992, 4, 10), "Senegal", Contract(Date(2022, 1, 1), Date(2026, 1, 1)), "Forward", 10),
-        Player(9, "Virgil", "Van Dijk", "V. Van Dijk", Date(1991, 7, 8), "Netherlands", Contract(Date(2023, 1, 1), Date(2026, 1, 1)), "Defender", 4),
-        Player(10, "Luka", "Modric", "L. Modric", Date(1985, 9, 9), "Croatia", Contract(Date(2020, 6, 1), Date(2022, 6, 1)), "Midfielder", 10),
-        Player(11, "Harry", "Kane", "H. Kane", Date(1993, 7, 28), "England", Contract(Date(2021, 7, 1), Date(2025, 7, 1)), "Forward", 10),
-        Player(12, "Sergio", "Aguero", "S. Aguero", Date(1988, 6, 2), "Argentina", Contract(Date(2021, 6, 1), Date(2023, 6, 1)), "Forward", 10),
-        Player(13, "Eden", "Hazard", "E. Hazard", Date(1991, 1, 7), "Belgium", Contract(Date(2022, 1, 1), Date(2027, 1, 1)), "Forward", 7),
-        Coach(14, "Pep", "Guardiola", "P. Guardiola", Date(1971, 1, 18), "Spain", Contract(Date(2020, 6, 1), Date(2023, 6, 1))),
-        Coach(15, "Jurgen", "Klopp", "J. Klopp", Date(1967, 6, 16), "Germany", Contract(Date(2020, 7, 1), Date(2024, 7, 1))),
-        Staff(16, "Jorge", "Desio", "J. Desio", Date(1966, 1, 1), "Argentina", Contract(Date(2020, 6, 1), Date(2023, 6, 1))),
-        Staff(17, "Craig", "Mawson", "C. Mawson", Date(1973, 8, 22), "England", Contract(Date(2020, 7, 1), Date(2024, 7, 1)))
+        Player(
+            1,
+            "Lionel",
+            "Messi",
+            "L. Messi",
+            Calendar.getInstance().apply { set(1987, 6, 24)},
+            "Argentina",
+            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2025, 6, 1)}),
+            "Forward",
+            10
+        ),
+        Player(
+            2,
+            "Cristiano",
+            "Ronaldo",
+            "C. Ronaldo",
+            Calendar.getInstance().apply { set(1985, 2, 5)},
+            "Portugal",
+            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)}),
+            "Forward",
+            7
+        ),
+        Player(
+            3,
+            "Neymar",
+            "Jr",
+            "Neymar",
+            Calendar.getInstance().apply { set(1992, 2, 5)},
+            "Brazil",
+            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            "Forward",
+            10
+        ),
+        Player(
+            4,
+            "Kylian",
+            "Mbappe",
+            "K. Mbappe",
+            Calendar.getInstance().apply { set(1998, 12, 20)},
+            "France",
+            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),
+            "Forward",
+            7
+        ),
+        Player(
+            5,
+            "Mohamed",
+            "Salah",
+            "M. Salah",
+            Calendar.getInstance().apply { set(1992, 6, 15)},
+            "Egypt",
+            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),
+            "Forward",
+            11
+        ),
+        Player(
+            6,
+            "Kevin",
+            "De Bruyne",
+            "K. De Bruyne",
+            Calendar.getInstance().apply { set(1991, 6, 28)},
+            "Belgium",
+            Contract(Calendar.getInstance().apply { set(2021, 8, 1)}, Calendar.getInstance().apply { set(2026, 8, 1)}),
+            "Midfielder",
+            17
+        ),
+        Player(
+            7,
+            "Robert",
+            "Lewandowski",
+            "R. Lewandowski",
+            Calendar.getInstance().apply { set(1988, 8, 21)},
+            "Poland",
+            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2024, 1, 1)}),
+            "Forward",
+            9
+        ),
+        Player(
+            8,
+            "Sadio",
+            "Mane",
+            "S. Mane",
+            Calendar.getInstance().apply { set(1992, 4, 10)},
+            "Senegal",
+            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            "Forward",
+            10
+        ),
+        Player(
+            9,
+            "Virgil",
+            "Van Dijk",
+            "V. Van Dijk",
+            Calendar.getInstance().apply { set(1991, 7, 8)},
+            "Netherlands",
+            Contract(Calendar.getInstance().apply { set(2023, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            "Defender",
+            4
+        ),
+        Player(
+            10,
+            "Luka",
+            "Modric",
+            "L. Modric",
+            Calendar.getInstance().apply { set(1985, 9, 9)},
+            "Croatia",
+            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2022, 6, 1)}),
+            "Midfielder",
+            10
+        ),
+        Player(
+            11,
+            "Harry",
+            "Kane",
+            "H. Kane",
+            Calendar.getInstance().apply { set(1993, 7, 28)},
+            "England",
+            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),
+            "Forward",
+            10
+        ),
+        Player(
+            12,
+            "Sergio",
+            "Aguero",
+            "S. Aguero",
+            Calendar.getInstance().apply { set(1988, 6, 2)},
+            "Argentina",
+            Contract(Calendar.getInstance().apply { set(2021, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)}),
+            "Forward",
+            10
+        ),
+        Player(
+            13,
+            "Eden",
+            "Hazard",
+            "E. Hazard",
+            Calendar.getInstance().apply { set(1991, 1, 7)},
+            "Belgium",
+            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),
+            "Forward",
+            7
+        ),
+        Coach(
+            14,
+            "Pep",
+            "Guardiola",
+            "P. Guardiola",
+            Calendar.getInstance().apply { set(1971, 1, 18)},
+            "Spain",
+            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})
+        ),
+        Coach(
+            15,
+            "Jurgen",
+            "Klopp",
+            "J. Klopp",
+            Calendar.getInstance().apply { set(1967, 6, 16)},
+            "Germany",
+            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})
+        ),
+        Staff(
+            16,
+            "Jorge",
+            "Desio",
+            "J. Desio",
+            Calendar.getInstance().apply { set(1966, 1, 1)},
+            "Argentina",
+            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})
+        ),
+        Staff(
+            17,
+            "Craig",
+            "Mawson",
+            "C. Mawson",
+            Calendar.getInstance().apply { set(1973, 8, 22)},
+            "England",
+            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})
+        )
     )
     private val teamList = listOf(
         Team(

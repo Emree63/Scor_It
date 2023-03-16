@@ -7,7 +7,7 @@ class Coach(
     firstName: String,
     lastName: String,
     name: String,
-    dateOfBirth: Date,
+    dateOfBirth: Calendar,
     nationality: String,
     contract: Contract
 ) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract)
