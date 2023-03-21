@@ -118,6 +118,11 @@ class Match {
     -idHomeTeam: Int
     -idAwayTeam: Int
     -status: String
+}
+
+class Score {
+    -home: Int
+    -away: Int
     -winner: String
 }
 
@@ -134,6 +139,8 @@ Team --> "-area" Area
 
 Competition --> "-area" Area
 Competition --> "-currentSeason" Season
+
+Match --> "-score" Score 
 
 @enduml
 ```
