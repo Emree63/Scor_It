@@ -12,7 +12,7 @@ import java.util.*
 class StubData : DataManager() {
     override val areaMgr: AreaManager = StubAreaManager(this)
     override val peopleMgr: PeopleManager = StubPeopleManager(this)
-    override val matchesMgr: MatchesManager = StubMatchesManager()
+    override val matchesMgr: MatchesManager = StubMatchesManager(this)
     override val competitionsMgr: CompetitionsManager = StubCompetitionsManager()
     override val teamsMgr: TeamsManager = StubTeamsManager(this)
 
@@ -36,9 +36,11 @@ class StubData : DataManager() {
             "Lionel",
             "Messi",
             "L. Messi",
-            Calendar.getInstance().apply { set(1987, 6, 24)},
+            Calendar.getInstance().apply { set(1987, 6, 24) },
             "Argentina",
-            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2025, 6, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2020, 6, 1) },
+                Calendar.getInstance().apply { set(2025, 6, 1) }),
             "Forward",
             10
         ),
@@ -47,9 +49,11 @@ class StubData : DataManager() {
             "Cristiano",
             "Ronaldo",
             "C. Ronaldo",
-            Calendar.getInstance().apply { set(1985, 2, 5)},
+            Calendar.getInstance().apply { set(1985, 2, 5) },
             "Portugal",
-            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2020, 7, 1) },
+                Calendar.getInstance().apply { set(2024, 7, 1) }),
             "Forward",
             7
         ),
@@ -58,9 +62,11 @@ class StubData : DataManager() {
             "Neymar",
             "Jr",
             "Neymar",
-            Calendar.getInstance().apply { set(1992, 2, 5)},
+            Calendar.getInstance().apply { set(1992, 2, 5) },
             "Brazil",
-            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 1, 1) },
+                Calendar.getInstance().apply { set(2026, 1, 1) }),
             "Forward",
             10
         ),
@@ -69,9 +75,11 @@ class StubData : DataManager() {
             "Kylian",
             "Mbappe",
             "K. Mbappe",
-            Calendar.getInstance().apply { set(1998, 12, 20)},
+            Calendar.getInstance().apply { set(1998, 12, 20) },
             "France",
-            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2022, 1, 1) },
+                Calendar.getInstance().apply { set(2027, 1, 1) }),
             "Forward",
             7
         ),
@@ -80,9 +88,11 @@ class StubData : DataManager() {
             "Mohamed",
             "Salah",
             "M. Salah",
-            Calendar.getInstance().apply { set(1992, 6, 15)},
+            Calendar.getInstance().apply { set(1992, 6, 15) },
             "Egypt",
-            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 7, 1) },
+                Calendar.getInstance().apply { set(2025, 7, 1) }),
             "Forward",
             11
         ),
@@ -91,9 +101,11 @@ class StubData : DataManager() {
             "Kevin",
             "De Bruyne",
             "K. De Bruyne",
-            Calendar.getInstance().apply { set(1991, 6, 28)},
+            Calendar.getInstance().apply { set(1991, 6, 28) },
             "Belgium",
-            Contract(Calendar.getInstance().apply { set(2021, 8, 1)}, Calendar.getInstance().apply { set(2026, 8, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 8, 1) },
+                Calendar.getInstance().apply { set(2026, 8, 1) }),
             "Midfielder",
             17
         ),
@@ -102,9 +114,11 @@ class StubData : DataManager() {
             "Robert",
             "Lewandowski",
             "R. Lewandowski",
-            Calendar.getInstance().apply { set(1988, 8, 21)},
+            Calendar.getInstance().apply { set(1988, 8, 21) },
             "Poland",
-            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2024, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 1, 1) },
+                Calendar.getInstance().apply { set(2024, 1, 1) }),
             "Forward",
             9
         ),
@@ -113,9 +127,11 @@ class StubData : DataManager() {
             "Sadio",
             "Mane",
             "S. Mane",
-            Calendar.getInstance().apply { set(1992, 4, 10)},
+            Calendar.getInstance().apply { set(1992, 4, 10) },
             "Senegal",
-            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2022, 1, 1) },
+                Calendar.getInstance().apply { set(2026, 1, 1) }),
             "Forward",
             10
         ),
@@ -124,9 +140,11 @@ class StubData : DataManager() {
             "Virgil",
             "Van Dijk",
             "V. Van Dijk",
-            Calendar.getInstance().apply { set(1991, 7, 8)},
+            Calendar.getInstance().apply { set(1991, 7, 8) },
             "Netherlands",
-            Contract(Calendar.getInstance().apply { set(2023, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2023, 1, 1) },
+                Calendar.getInstance().apply { set(2026, 1, 1) }),
             "Defender",
             4
         ),
@@ -135,9 +153,11 @@ class StubData : DataManager() {
             "Luka",
             "Modric",
             "L. Modric",
-            Calendar.getInstance().apply { set(1985, 9, 9)},
+            Calendar.getInstance().apply { set(1985, 9, 9) },
             "Croatia",
-            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2022, 6, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2020, 6, 1) },
+                Calendar.getInstance().apply { set(2022, 6, 1) }),
             "Midfielder",
             10
         ),
@@ -146,9 +166,11 @@ class StubData : DataManager() {
             "Harry",
             "Kane",
             "H. Kane",
-            Calendar.getInstance().apply { set(1993, 7, 28)},
+            Calendar.getInstance().apply { set(1993, 7, 28) },
             "England",
-            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 7, 1) },
+                Calendar.getInstance().apply { set(2025, 7, 1) }),
             "Forward",
             10
         ),
@@ -157,9 +179,11 @@ class StubData : DataManager() {
             "Sergio",
             "Aguero",
             "S. Aguero",
-            Calendar.getInstance().apply { set(1988, 6, 2)},
+            Calendar.getInstance().apply { set(1988, 6, 2) },
             "Argentina",
-            Contract(Calendar.getInstance().apply { set(2021, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2021, 6, 1) },
+                Calendar.getInstance().apply { set(2023, 6, 1) }),
             "Forward",
             10
         ),
@@ -168,9 +192,11 @@ class StubData : DataManager() {
             "Eden",
             "Hazard",
             "E. Hazard",
-            Calendar.getInstance().apply { set(1991, 1, 7)},
+            Calendar.getInstance().apply { set(1991, 1, 7) },
             "Belgium",
-            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),
+            Contract(
+                Calendar.getInstance().apply { set(2022, 1, 1) },
+                Calendar.getInstance().apply { set(2027, 1, 1) }),
             "Forward",
             7
         ),
@@ -179,85 +205,154 @@ class StubData : DataManager() {
             "Pep",
             "Guardiola",
             "P. Guardiola",
-            Calendar.getInstance().apply { set(1971, 1, 18)},
+            Calendar.getInstance().apply { set(1971, 1, 18) },
             "Spain",
-            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})
+            Contract(
+                Calendar.getInstance().apply { set(2020, 6, 1) },
+                Calendar.getInstance().apply { set(2023, 6, 1) })
         ),
         Coach(
             15,
             "Jurgen",
             "Klopp",
             "J. Klopp",
-            Calendar.getInstance().apply { set(1967, 6, 16)},
+            Calendar.getInstance().apply { set(1967, 6, 16) },
             "Germany",
-            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})
+            Contract(
+                Calendar.getInstance().apply { set(2020, 7, 1) },
+                Calendar.getInstance().apply { set(2024, 7, 1) })
         ),
         Staff(
             16,
             "Jorge",
             "Desio",
             "J. Desio",
-            Calendar.getInstance().apply { set(1966, 1, 1)},
+            Calendar.getInstance().apply { set(1966, 1, 1) },
             "Argentina",
-            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})
+            Contract(
+                Calendar.getInstance().apply { set(2020, 6, 1) },
+                Calendar.getInstance().apply { set(2023, 6, 1) })
         ),
         Staff(
             17,
             "Craig",
             "Mawson",
             "C. Mawson",
-            Calendar.getInstance().apply { set(1973, 8, 22)},
+            Calendar.getInstance().apply { set(1973, 8, 22) },
             "England",
-            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})
+            Contract(
+                Calendar.getInstance().apply { set(2020, 7, 1) },
+                Calendar.getInstance().apply { set(2024, 7, 1) })
         )
     )
-    private val teamList = listOf(
-        Team(
+
+    private val random = java.util.Random()
+    val matchList = listOf(
+        Match(
             1,
-            "Paris Saint-Germain FC",
-            "PSG",
-            "https://crests.football-data.org/524.svg",
-            "24 Rue du Commandant Guilbaud, 75016 Paris, France",
-            "https://www.psg.fr/",
-            "1970",
-            "Navy / Red",
-            areaList[0],
-            "Parc des Princes",
-            peopleList[0] as Coach,
-            listOf(peopleList[2] as Staff),
-            listOf(peopleList[0] as Player, peopleList[3] as Player, peopleList[11] as Player)
-        ),
-        Team(
+            1,
             2,
-            "FC Barcelona",
-            "BAR",
-            "https://crests.football-data.org/81.svg",
-            "Carrer d'Aristides Maillol, s/n, 08028 Barcelona, Spain",
-            "https://www.fcbarcelona.com/",
-            "1899",
-            "Blue / Red",
-            areaList[3],
-            "Camp Nou",
-            peopleList[0] as Coach,
-            listOf(peopleList[2] as Staff),
-            listOf(peopleList[0] as Player, peopleList[5] as Player, peopleList[9] as Player)
+            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(1, 1, "DRAW")
         ),
-        Team(
+        Match(
+            2,
             3,
-            "Liverpool FC",
-            "LIV",
-            "https://crests.football-data.org/64.svg",
-            "Anfield Road, Liverpool L4 0TH, United Kingdom",
-            "https://www.liverpoolfc.com/",
-            "1892",
-            "Red",
-            areaList[2],
-            "Anfield",
-            peopleList[1] as Coach,
-            listOf(peopleList[3] as Staff),
-            listOf(peopleList[7] as Player, peopleList[8] as Player, peopleList[10] as Player)
+            1,
+            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(2, 0, "HOME_TEAM")
+        ),
+        Match(
+            3,
+            2,
+            3,
+            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(0, 4, "AWAY_TEAM")
+        ),
+        Match(
+            4,
+            1,
+            3,
+            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(0, 1, "AWAY_TEAM")
+        ),
+        Match(
+            5,
+            2,
+            1,
+            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(0, 0, "DRAW")
+        ),
+        Match(
+            6,
+            3,
+            2,
+            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+            "FINISHED",
+            Score(2, 0, "HOME_TEAM")
         )
     )
+
+    val teamList: MutableList<Team> = mutableListOf()
+
+    fun initTeams() {
+        teamList.add(
+            Team(
+                1,
+                "Paris Saint-Germain FC",
+                "PSG",
+                "https://crests.football-data.org/524.svg",
+                "24 Rue du Commandant Guilbaud, 75016 Paris, France",
+                "https://www.psg.fr/",
+                "1970",
+                "Navy / Red",
+                areaList[0],
+                "Parc des Princes",
+                peopleList[0] as Coach,
+                listOf(peopleList[2] as Staff),
+                listOf(peopleList[0] as Player, peopleList[3] as Player, peopleList[11] as Player)
+            )
+        )
+        teamList.add(
+            Team(
+                2,
+                "FC Barcelona",
+                "BAR",
+                "https://crests.football-data.org/81.svg",
+                "Carrer d'Aristides Maillol, s/n, 08028 Barcelona, Spain",
+                "https://www.fcbarcelona.com/",
+                "1899",
+                "Blue / Red",
+                areaList[3],
+                "Camp Nou",
+                peopleList[0] as Coach,
+                listOf(peopleList[2] as Staff),
+                listOf(peopleList[0] as Player, peopleList[5] as Player, peopleList[9] as Player)
+            )
+        )
+        teamList.add(
+            Team(
+                3,
+                "Liverpool FC",
+                "LIV",
+                "https://crests.football-data.org/64.svg",
+                "Anfield Road, Liverpool L4 0TH, United Kingdom",
+                "https://www.liverpoolfc.com/",
+                "1892",
+                "Red",
+                areaList[2],
+                "Anfield",
+                peopleList[1] as Coach,
+                listOf(peopleList[3] as Staff),
+                listOf(peopleList[7] as Player, peopleList[8] as Player, peopleList[10] as Player)
+            )
+        )
+    }
 
 
     class StubAreaManager(private val parent: StubData) : AreaManager {
@@ -279,32 +374,27 @@ class StubData : DataManager() {
         override fun getItemById(id: Int) = parent.peopleList.find { it.id == id }
     }
 
-    class StubMatchesManager : MatchesManager {
-        override fun getItemsByName(substring: String): List<Match> {
-            TODO("Not yet implemented")
-        }
+    class StubMatchesManager(private val parent: StubData) : MatchesManager {
+        override fun getItemsByName(substring: String) =
+            throw java.lang.Exception("Don't call this function")
 
-        override fun getItems(): List<Match> {
-            TODO("Not yet implemented")
-        }
+        override fun getItems(): List<Match> = parent.matchList
 
-        override fun getItemById(id: Int): Match? {
-            TODO("Not yet implemented")
-        }
+        override fun getItemById(id: Int) = parent.matchList.find { it.id == id }
 
     }
 
     class StubCompetitionsManager : CompetitionsManager {
         override fun getItemsByName(substring: String): List<Competition> {
-            TODO("Not yet implemented")
+            throw java.lang.Exception("Don't call this function")
         }
 
         override fun getItems(): List<Competition> {
-            TODO("Not yet implemented")
+            throw java.lang.Exception("Don't call this function")
         }
 
         override fun getItemById(id: Int): Competition? {
-            TODO("Not yet implemented")
+            throw java.lang.Exception("Don't call this function")
         }
 
     }

@@ -1,7 +1,6 @@
 package uca.iut.clermont.model
 
 import java.util.Calendar
-import java.util.Date
 
 abstract class Personne(
     val id: Int,
