@@ -50,8 +50,8 @@ skinparam package {
 hide circle
 
 class Contract {
-    -start: Date
-    -until: Date
+    -start: Calendar
+    -until: Calendar
 
     +duration() : Int
 }
@@ -61,7 +61,7 @@ abstract class Personne {
     -firstName: String
     -lastName: String
     -name: String
-    -dateOfBirth: Date
+    -dateOfBirth: Calendar
     -nationality: String
 
 }
@@ -107,8 +107,8 @@ class Competition {
 
 class Season {
     -id: Int
-    -startDate: Date
-    -endDate: Date
+    -startDate: Calendar
+    -endDate: Calendar
     -currentMatchday: Int
     -winner: Int
 }
@@ -116,6 +116,7 @@ class Season {
 class Match {
     -id: Int
     -idHomeTeam: Int
+    -score: Score
     -idAwayTeam: Int
     -status: String
 }
