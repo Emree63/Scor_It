@@ -1,0 +1,346 @@
+Index: app/src/main/java/uca/iut/clermont/data/StubData.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.data\n\nimport AreaManager\nimport CompetitionsManager\nimport DataManager\nimport MatchesManager\nimport PeopleManager\nimport TeamsManager\nimport uca.iut.clermont.model.*\nimport java.util.*\n\nclass StubData : DataManager() {\n    override val areaMgr: AreaManager = StubAreaManager(this)\n    override val peopleMgr: PeopleManager = StubPeopleManager(this)\n    override val matchesMgr: MatchesManager = StubMatchesManager()\n    override val competitionsMgr: CompetitionsManager = StubCompetitionsManager()\n    override val teamsMgr: TeamsManager = StubTeamsManager(this)\n\n    private val areaList = listOf(\n        Area(1, \"France\", \"FRA\", \"https://crests.football-data.org/773.svg\", \"Europe\"),\n        Area(2, \"Spain\", \"ESP\", \"https://crests.football-data.org/760.svg\", \"Europe\"),\n        Area(3, \"Brazil\", \"BRA\", \"https://crests.football-data.org/764.svg\", \"South America\"),\n        Area(4, \"Mexico\", \"Mex\", \"https://crests.football-data.org/mexico.svg\", \"North America\"),\n        Area(\n            5,\n            \"Australia\",\n            \"AUS\",\n            \"https://australie-voyage.fr/wp-content/uploads/2020/08/Drapeau-australien.jpg\",\n            \"Oceania\"\n        )\n    )\n\n    private val peopleList = listOf(\n        Player(\n            1,\n            \"Lionel\",\n            \"Messi\",\n            \"L. Messi\",\n            Calendar.getInstance().apply { set(1987, 6, 24)},\n            \"Argentina\",\n            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2025, 6, 1)}),\n            \"Forward\",\n            10\n        ),\n        Player(\n            2,\n            \"Cristiano\",\n            \"Ronaldo\",\n            \"C. Ronaldo\",\n            Calendar.getInstance().apply { set(1985, 2, 5)},\n            \"Portugal\",\n            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)}),\n            \"Forward\",\n            7\n        ),\n        Player(\n            3,\n            \"Neymar\",\n            \"Jr\",\n            \"Neymar\",\n            Calendar.getInstance().apply { set(1992, 2, 5)},\n            \"Brazil\",\n            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),\n            \"Forward\",\n            10\n        ),\n        Player(\n            4,\n            \"Kylian\",\n            \"Mbappe\",\n            \"K. Mbappe\",\n            Calendar.getInstance().apply { set(1998, 12, 20)},\n            \"France\",\n            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),\n            \"Forward\",\n            7\n        ),\n        Player(\n            5,\n            \"Mohamed\",\n            \"Salah\",\n            \"M. Salah\",\n            Calendar.getInstance().apply { set(1992, 6, 15)},\n            \"Egypt\",\n            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),\n            \"Forward\",\n            11\n        ),\n        Player(\n            6,\n            \"Kevin\",\n            \"De Bruyne\",\n            \"K. De Bruyne\",\n            Calendar.getInstance().apply { set(1991, 6, 28)},\n            \"Belgium\",\n            Contract(Calendar.getInstance().apply { set(2021, 8, 1)}, Calendar.getInstance().apply { set(2026, 8, 1)}),\n            \"Midfielder\",\n            17\n        ),\n        Player(\n            7,\n            \"Robert\",\n            \"Lewandowski\",\n            \"R. Lewandowski\",\n            Calendar.getInstance().apply { set(1988, 8, 21)},\n            \"Poland\",\n            Contract(Calendar.getInstance().apply { set(2021, 1, 1)}, Calendar.getInstance().apply { set(2024, 1, 1)}),\n            \"Forward\",\n            9\n        ),\n        Player(\n            8,\n            \"Sadio\",\n            \"Mane\",\n            \"S. Mane\",\n            Calendar.getInstance().apply { set(1992, 4, 10)},\n            \"Senegal\",\n            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),\n            \"Forward\",\n            10\n        ),\n        Player(\n            9,\n            \"Virgil\",\n            \"Van Dijk\",\n            \"V. Van Dijk\",\n            Calendar.getInstance().apply { set(1991, 7, 8)},\n            \"Netherlands\",\n            Contract(Calendar.getInstance().apply { set(2023, 1, 1)}, Calendar.getInstance().apply { set(2026, 1, 1)}),\n            \"Defender\",\n            4\n        ),\n        Player(\n            10,\n            \"Luka\",\n            \"Modric\",\n            \"L. Modric\",\n            Calendar.getInstance().apply { set(1985, 9, 9)},\n            \"Croatia\",\n            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2022, 6, 1)}),\n            \"Midfielder\",\n            10\n        ),\n        Player(\n            11,\n            \"Harry\",\n            \"Kane\",\n            \"H. Kane\",\n            Calendar.getInstance().apply { set(1993, 7, 28)},\n            \"England\",\n            Contract(Calendar.getInstance().apply { set(2021, 7, 1)}, Calendar.getInstance().apply { set(2025, 7, 1)}),\n            \"Forward\",\n            10\n        ),\n        Player(\n            12,\n            \"Sergio\",\n            \"Aguero\",\n            \"S. Aguero\",\n            Calendar.getInstance().apply { set(1988, 6, 2)},\n            \"Argentina\",\n            Contract(Calendar.getInstance().apply { set(2021, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)}),\n            \"Forward\",\n            10\n        ),\n        Player(\n            13,\n            \"Eden\",\n            \"Hazard\",\n            \"E. Hazard\",\n            Calendar.getInstance().apply { set(1991, 1, 7)},\n            \"Belgium\",\n            Contract(Calendar.getInstance().apply { set(2022, 1, 1)}, Calendar.getInstance().apply { set(2027, 1, 1)}),\n            \"Forward\",\n            7\n        ),\n        Coach(\n            14,\n            \"Pep\",\n            \"Guardiola\",\n            \"P. Guardiola\",\n            Calendar.getInstance().apply { set(1971, 1, 18)},\n            \"Spain\",\n            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})\n        ),\n        Coach(\n            15,\n            \"Jurgen\",\n            \"Klopp\",\n            \"J. Klopp\",\n            Calendar.getInstance().apply { set(1967, 6, 16)},\n            \"Germany\",\n            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})\n        ),\n        Staff(\n            16,\n            \"Jorge\",\n            \"Desio\",\n            \"J. Desio\",\n            Calendar.getInstance().apply { set(1966, 1, 1)},\n            \"Argentina\",\n            Contract(Calendar.getInstance().apply { set(2020, 6, 1)}, Calendar.getInstance().apply { set(2023, 6, 1)})\n        ),\n        Staff(\n            17,\n            \"Craig\",\n            \"Mawson\",\n            \"C. Mawson\",\n            Calendar.getInstance().apply { set(1973, 8, 22)},\n            \"England\",\n            Contract(Calendar.getInstance().apply { set(2020, 7, 1)}, Calendar.getInstance().apply { set(2024, 7, 1)})\n        )\n    )\n    private val teamList = listOf(\n        Team(\n            1,\n            \"Paris Saint-Germain FC\",\n            \"PSG\",\n            \"https://crests.football-data.org/524.svg\",\n            \"24 Rue du Commandant Guilbaud, 75016 Paris, France\",\n            \"https://www.psg.fr/\",\n            \"1970\",\n            \"Navy / Red\",\n            areaList[0],\n            \"Parc des Princes\",\n            peopleList[0] as Coach,\n            listOf(peopleList[2] as Staff),\n            listOf(peopleList[0] as Player, peopleList[3] as Player, peopleList[11] as Player)\n        ),\n        Team(\n            2,\n            \"FC Barcelona\",\n            \"BAR\",\n            \"https://crests.football-data.org/81.svg\",\n            \"Carrer d'Aristides Maillol, s/n, 08028 Barcelona, Spain\",\n            \"https://www.fcbarcelona.com/\",\n            \"1899\",\n            \"Blue / Red\",\n            areaList[3],\n            \"Camp Nou\",\n            peopleList[0] as Coach,\n            listOf(peopleList[2] as Staff),\n            listOf(peopleList[0] as Player, peopleList[5] as Player, peopleList[9] as Player)\n        ),\n        Team(\n            3,\n            \"Liverpool FC\",\n            \"LIV\",\n            \"https://crests.football-data.org/64.svg\",\n            \"Anfield Road, Liverpool L4 0TH, United Kingdom\",\n            \"https://www.liverpoolfc.com/\",\n            \"1892\",\n            \"Red\",\n            areaList[2],\n            \"Anfield\",\n            peopleList[1] as Coach,\n            listOf(peopleList[3] as Staff),\n            listOf(peopleList[7] as Player, peopleList[8] as Player, peopleList[10] as Player)\n        )\n    )\n\n\n    class StubAreaManager(private val parent: StubData) : AreaManager {\n        override fun getItemsByName(substring: String) =\n            parent.areaList.filter { it.name.contains(substring, ignoreCase = true) }\n\n        override fun getItems(): List<Area> = parent.areaList\n\n        override fun getItemById(id: Int) = parent.areaList.find { it.id == id }\n\n    }\n\n    class StubPeopleManager(private val parent: StubData) : PeopleManager {\n        override fun getItemsByName(substring: String) =\n            parent.peopleList.filter { it.name.contains(substring, ignoreCase = true) }\n\n        override fun getItems() = parent.peopleList\n\n        override fun getItemById(id: Int) = parent.peopleList.find { it.id == id }\n    }\n\n    class StubMatchesManager : MatchesManager {\n        override fun getItemsByName(substring: String): List<Match> {\n            TODO(\"Not yet implemented\")\n        }\n\n        override fun getItems(): List<Match> {\n            TODO(\"Not yet implemented\")\n        }\n\n        override fun getItemById(id: Int): Match? {\n            TODO(\"Not yet implemented\")\n        }\n\n    }\n\n    class StubCompetitionsManager : CompetitionsManager {\n        override fun getItemsByName(substring: String): List<Competition> {\n            TODO(\"Not yet implemented\")\n        }\n\n        override fun getItems(): List<Competition> {\n            TODO(\"Not yet implemented\")\n        }\n\n        override fun getItemById(id: Int): Competition? {\n            TODO(\"Not yet implemented\")\n        }\n\n    }\n\n    class StubTeamsManager(private val parent: StubData) : TeamsManager {\n        override fun getItemsByName(substring: String) =\n            parent.teamList.filter { it.name.contains(substring, ignoreCase = true) }\n\n        override fun getItems() = parent.teamList\n\n        override fun getItemById(id: Int) = parent.teamList.find { it.id == id }\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/data/StubData.kt b/app/src/main/java/uca/iut/clermont/data/StubData.kt
+--- a/app/src/main/java/uca/iut/clermont/data/StubData.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/data/StubData.kt	(date 1679385919089)
+@@ -12,7 +12,7 @@
+ class StubData : DataManager() {
+     override val areaMgr: AreaManager = StubAreaManager(this)
+     override val peopleMgr: PeopleManager = StubPeopleManager(this)
+-    override val matchesMgr: MatchesManager = StubMatchesManager()
++    override val matchesMgr: MatchesManager = StubMatchesManager(this)
+     override val competitionsMgr: CompetitionsManager = StubCompetitionsManager()
+     override val teamsMgr: TeamsManager = StubTeamsManager(this)
+ 
+@@ -259,6 +259,58 @@
+         )
+     )
+ 
++    private val random = java.util.Random()
++    val matchList = listOf(
++        Match(
++            1,
++            teamList[0].id,
++            teamList[1].id,
++            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(1, 1, "DRAW")
++        ),
++        Match(
++            2,
++            teamList[2].id,
++            teamList[0].id,
++            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(2, 0, "HOME_TEAM")
++        ),
++        Match(
++            3,
++            teamList[1].id,
++            teamList[2].id,
++            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(0, 4, "AWAY_TEAM")
++        ),
++        Match(
++            4,
++            teamList[0].id,
++            teamList[2].id,
++            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(0, 1, "AWAY_TEAM")
++        ),
++        Match(
++            5,
++            teamList[1].id,
++            teamList[0].id,
++            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(0, 0, "DRAW")
++        ),
++        Match(
++            6,
++            teamList[2].id,
++            teamList[1].id,
++            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
++            "FINISHED",
++            Score(2, 0, "HOME_TEAM")
++        )
++    )
++
+ 
+     class StubAreaManager(private val parent: StubData) : AreaManager {
+         override fun getItemsByName(substring: String) =
+@@ -279,32 +331,27 @@
+         override fun getItemById(id: Int) = parent.peopleList.find { it.id == id }
+     }
+ 
+-    class StubMatchesManager : MatchesManager {
+-        override fun getItemsByName(substring: String): List<Match> {
+-            TODO("Not yet implemented")
+-        }
++    class StubMatchesManager(private val parent: StubData) : MatchesManager {
++        override fun getItemsByName(substring: String) =
++            throw java.lang.Exception("Don't call this function")
+ 
+-        override fun getItems(): List<Match> {
+-            TODO("Not yet implemented")
+-        }
++        override fun getItems(): List<Match> = parent.matchList
+ 
+-        override fun getItemById(id: Int): Match? {
+-            TODO("Not yet implemented")
+-        }
++        override fun getItemById(id: Int) = parent.matchList.find { it.id == id }
+ 
+     }
+ 
+     class StubCompetitionsManager : CompetitionsManager {
+         override fun getItemsByName(substring: String): List<Competition> {
+-            TODO("Not yet implemented")
++            throw java.lang.Exception("Don't call this function")
+         }
+ 
+         override fun getItems(): List<Competition> {
+-            TODO("Not yet implemented")
++            throw java.lang.Exception("Don't call this function")
+         }
+ 
+         override fun getItemById(id: Int): Competition? {
+-            TODO("Not yet implemented")
++            throw java.lang.Exception("Don't call this function")
+         }
+ 
+     }
+Index: app/src/main/java/uca/iut/clermont/view/HomeActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.view\n\nimport android.app.Activity\nimport android.os.Bundle\nimport android.widget.ImageView\nimport com.bumptech.glide.Glide\nimport uca.iut.clermont.R\n\nclass HomeActivity : Activity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_home)\n        val imageFirstTeam = findViewById<ImageView>(R.id.ImageFirstTeam)\n\n        Glide.with(this)\n            .load(\"https://crests.football-data.org/1765.svg\")\n            .error(R.drawable.imagenotfound)\n            .into(imageFirstTeam)\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/view/HomeActivity.kt b/app/src/main/java/uca/iut/clermont/view/HomeActivity.kt
+--- a/app/src/main/java/uca/iut/clermont/view/HomeActivity.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/view/HomeActivity.kt	(date 1679385935801)
+@@ -3,15 +3,27 @@
+ import android.app.Activity
+ import android.os.Bundle
+ import android.widget.ImageView
++import androidx.recyclerview.widget.RecyclerView
+ import com.bumptech.glide.Glide
+ import uca.iut.clermont.R
++import uca.iut.clermont.view.adapter.MatchesAdapter
++import java.util.*
+ 
+ class HomeActivity : Activity() {
++
++    //private var manager = StubData()
++
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_home)
+         val imageFirstTeam = findViewById<ImageView>(R.id.ImageFirstTeam)
+ 
++        val adapterMatches = findViewById<RecyclerView>(R.id.ListRecentsMatches)
++
++        with(adapterMatches) {
++            adapter = MatchesAdapter(matchList)
++        }
++
+         Glide.with(this)
+             .load("https://crests.football-data.org/1765.svg")
+             .error(R.drawable.imagenotfound)
+Index: app/src/main/java/uca/iut/clermont/model/Match.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.model\n\nclass Match(\n    val id: Int,\n    val idHomeTeam: Int,\n    val idAwayTeam: Int,\n    val status: String,\n    val winner: String\n) {\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/model/Match.kt b/app/src/main/java/uca/iut/clermont/model/Match.kt
+--- a/app/src/main/java/uca/iut/clermont/model/Match.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/model/Match.kt	(date 1679385054618)
+@@ -1,10 +1,12 @@
+ package uca.iut.clermont.model
+ 
++import java.util.Calendar
++
+ class Match(
+     val id: Int,
+     val idHomeTeam: Int,
+     val idAwayTeam: Int,
++    val date: Calendar,
+     val status: String,
+-    val winner: String
+-) {
+-}
+\ No newline at end of file
++    val score: Score
++)
+\ No newline at end of file
+Index: app/src/main/java/uca/iut/clermont/view/FavoriteActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.view\n\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport uca.iut.clermont.R\n\nclass FavoriteActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_favorite)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/view/FavoriteActivity.kt b/app/src/main/java/uca/iut/clermont/view/FavoriteActivity.kt
+--- a/app/src/main/java/uca/iut/clermont/view/FavoriteActivity.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/view/FavoriteActivity.kt	(date 1679384858096)
+@@ -1,10 +1,10 @@
+ package uca.iut.clermont.view
+ 
+-import androidx.appcompat.app.AppCompatActivity
++import android.app.Activity
+ import android.os.Bundle
+ import uca.iut.clermont.R
+ 
+-class FavoriteActivity : AppCompatActivity() {
++class FavoriteActivity : Activity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_favorite)
+Index: app/src/main/java/uca/iut/clermont/view/adapter/MatchesAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/view/adapter/MatchesAdapter.kt b/app/src/main/java/uca/iut/clermont/view/adapter/MatchesAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1679385332913)
++++ b/app/src/main/java/uca/iut/clermont/view/adapter/MatchesAdapter.kt	(date 1679385332913)
+@@ -0,0 +1,21 @@
++package uca.iut.clermont.view.adapter
++
++import android.view.LayoutInflater
++import android.view.ViewGroup
++import androidx.recyclerview.widget.RecyclerView
++import uca.iut.clermont.R
++import uca.iut.clermont.model.Match
++import uca.iut.clermont.view.viewHolder.MatchHolder
++
++class MatchesAdapter(val recentMatches: List<Match>) : RecyclerView.Adapter<MatchHolder>() {
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchHolder {
++        return MatchHolder(LayoutInflater.from(parent.context).inflate(R.layout.cellule_match, parent, false))
++    }
++
++    override fun onBindViewHolder(holder: MatchHolder, position: Int) {
++        holder.textView.text = recentMatches[position].toString()
++    }
++
++    override fun getItemCount() = recentMatches.size
++
++}
+\ No newline at end of file
+Index: app/src/main/java/uca/iut/clermont/model/Personne.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.model\n\nimport java.util.Calendar\nimport java.util.Date\n\nabstract class Personne(\n    val id: Int,\n    val firstName: String,\n    val lastName: String,\n    val name: String,\n    val dateOfBirth: Calendar,\n    val nationality: String,\n    val contract: Contract\n)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/model/Personne.kt b/app/src/main/java/uca/iut/clermont/model/Personne.kt
+--- a/app/src/main/java/uca/iut/clermont/model/Personne.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/model/Personne.kt	(date 1679384810112)
+@@ -1,7 +1,6 @@
+ package uca.iut.clermont.model
+ 
+ import java.util.Calendar
+-import java.util.Date
+ 
+ abstract class Personne(
+     val id: Int,
+Index: app/src/main/java/uca/iut/clermont/model/Score.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/model/Score.kt b/app/src/main/java/uca/iut/clermont/model/Score.kt
+new file mode 100644
+--- /dev/null	(date 1679384826924)
++++ b/app/src/main/java/uca/iut/clermont/model/Score.kt	(date 1679384826924)
+@@ -0,0 +1,7 @@
++package uca.iut.clermont.model
++
++class Score(
++    val home: Int,
++    val away: Int,
++    val winner: String
++)
+\ No newline at end of file
+Index: app/src/main/java/uca/iut/clermont/model/Staff.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uca.iut.clermont.model\n\nimport java.util.Calendar\nimport java.util.Date\n\nclass Staff(\n    id: Int,\n    firstName: String,\n    lastName: String,\n    name: String,\n    dateOfBirth: Calendar,\n    nationality: String,\n    contract: Contract\n) : Personne(id, firstName, lastName, name, dateOfBirth, nationality, contract)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/model/Staff.kt b/app/src/main/java/uca/iut/clermont/model/Staff.kt
+--- a/app/src/main/java/uca/iut/clermont/model/Staff.kt	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/java/uca/iut/clermont/model/Staff.kt	(date 1679384834976)
+@@ -1,7 +1,6 @@
+ package uca.iut.clermont.model
+ 
+ import java.util.Calendar
+-import java.util.Date
+ 
+ class Staff(
+     id: Int,
+Index: app/src/main/res/layout/activity_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:paddingHorizontal=\"30dp\"\n    tools:context=\".view.HomeActivity\">\n\n    <TextView\n        android:id=\"@+id/textViewTitle\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"40dp\"\n        android:text=\"Hello Varun\"\n        android:textColor=\"@color/title\"\n        android:textSize=\"20sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/textViewSubtitle\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"5dp\"\n        android:fontFamily=\"@font/mulish_black\"\n        android:text=\"Welcome Back!\"\n        android:textColor=\"@color/title\"\n        android:textSize=\"28sp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/textViewTitle\" />\n\n\n    <LinearLayout\n        android:id=\"@+id/searchBarContainer\"\n        android:layout_width=\"0dp\"\n        android:layout_height=\"45dp\"\n        android:layout_marginTop=\"20dp\"\n        android:background=\"@drawable/background\"\n        android:gravity=\"center_vertical\"\n        android:orientation=\"horizontal\"\n        android:paddingHorizontal=\"16dp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/textViewSubtitle\">\n\n        <ImageView\n            android:layout_width=\"14dp\"\n            android:layout_height=\"14dp\"\n            android:contentDescription=\"search icon\"\n            android:src=\"@drawable/search\" />\n\n        <EditText\n            android:id=\"@+id/searchBar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginStart=\"8dp\"\n            android:background=\"@android:color/transparent\"\n            android:drawablePadding=\"8dp\"\n            android:hint=\"Search for a league, team, etc.\"\n            android:inputType=\"text\"\n            android:maxLines=\"1\"\n            android:textColorHint=\"#B0B0B0\"\n            android:textSize=\"15dp\" />\n\n    </LinearLayout>\n\n    <TextView\n        android:id=\"@+id/textViewRecentMatches\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"20dp\"\n        android:text=\"Recent Matches\"\n        android:textColor=\"@color/title\"\n        android:textSize=\"20dp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/searchBarContainer\" />\n\n    <LinearLayout\n        android:id=\"@+id/CardContainer\"\n        android:layout_width=\"0dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"10dp\"\n        android:background=\"@drawable/background\"\n        android:gravity=\"center_horizontal\"\n        android:orientation=\"vertical\"\n        android:paddingHorizontal=\"20dp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/textViewRecentMatches\">\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginTop=\"15dp\"\n            android:layout_marginBottom=\"15dp\"\n            android:ellipsize=\"end\"\n            android:fontFamily=\"@font/mulish_bold\"\n            android:maxLines=\"1\"\n            android:text=\"Champions League - Groupe Stage: Matchay\"\n            android:textColor=\"@color/title\"\n            android:textSize=\"14dp\"\n            android:textStyle=\"bold\" />\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            android:layout_marginBottom=\"10dp\"\n            android:orientation=\"horizontal\">\n\n            <LinearLayout\n                android:layout_width=\"0dp\"\n                android:layout_height=\"wrap_content\"\n                android:layout_weight=\"0.4\"\n                android:gravity=\"center_horizontal\"\n                android:orientation=\"vertical\">\n\n                <ImageView\n                    android:id=\"@+id/ImageFirstTeam\"\n                    android:layout_width=\"60dp\"\n                    android:layout_height=\"60dp\" />\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:ellipsize=\"end\"\n                    android:maxLines=\"2\"\n\n                    android:text=\"Fluminense FC\"\n                    android:textAlignment=\"center\"\n                    android:textSize=\"16dp\" />\n\n            </LinearLayout>\n\n            <LinearLayout\n                android:layout_width=\"0dp\"\n                android:layout_height=\"wrap_content\"\n                android:layout_weight=\"0.3\"\n                android:gravity=\"center_horizontal\"\n                android:orientation=\"vertical\">\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:fontFamily=\"@font/mulish_black\"\n                    android:text=\"2-1\"\n                    android:textColor=\"@color/title\"\n                    android:textSize=\"43dp\" />\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:ellipsize=\"end\"\n                    android:fontFamily=\"@font/mulish_extrabold\"\n                    android:maxLines=\"2\"\n                    android:text=\"Full-time\"\n                    android:textAlignment=\"center\"\n                    android:textColor=\"@color/title\"\n                    android:textSize=\"18dp\" />\n\n            </LinearLayout>\n\n            <LinearLayout\n                android:layout_width=\"0dp\"\n                android:layout_height=\"wrap_content\"\n                android:layout_weight=\"0.4\"\n                android:gravity=\"center_horizontal\"\n                android:orientation=\"vertical\">\n\n                <ImageView\n                    android:id=\"@+id/ImageSecondTeam\"\n                    android:layout_width=\"60dp\"\n                    android:layout_height=\"60dp\" />\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:ellipsize=\"end\"\n                    android:maxLines=\"2\"\n                    android:text=\"CA Mineiro\"\n                    android:textAlignment=\"center\"\n                    android:textSize=\"16dp\" />\n\n            </LinearLayout>\n\n        </LinearLayout>\n\n        <View\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"1dp\"\n            android:layout_marginBottom=\"20dp\"\n            android:background=\"#E1DFDF\" />\n    </LinearLayout>\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_home.xml b/app/src/main/res/layout/activity_home.xml
+--- a/app/src/main/res/layout/activity_home.xml	(revision 25693eb0d9f8f8dd921848f43aa3aef5e6b65476)
++++ b/app/src/main/res/layout/activity_home.xml	(date 1679385539992)
+@@ -194,4 +194,12 @@
+             android:background="#E1DFDF" />
+     </LinearLayout>
+ 
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/ListRecentsMatches"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/CardContainer" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/uca/iut/clermont/view/viewHolder/MatchHolder.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/uca/iut/clermont/view/viewHolder/MatchHolder.kt b/app/src/main/java/uca/iut/clermont/view/viewHolder/MatchHolder.kt
+new file mode 100644
+--- /dev/null	(date 1679385339625)
++++ b/app/src/main/java/uca/iut/clermont/view/viewHolder/MatchHolder.kt	(date 1679385339625)
+@@ -0,0 +1,17 @@
++package uca.iut.clermont.view.viewHolder
++
++import android.view.View
++import android.widget.TextView
++import androidx.recyclerview.widget.RecyclerView
++import uca.iut.clermont.R
++
++class MatchHolder(view: View) : RecyclerView.ViewHolder(view) {
++    val textView: TextView
++
++    init {
++        // Define click listener for the ViewHolder's View
++        textView = view.findViewById(R.id.TitleFirstTeam)
++    }
++
++
++}
+\ No newline at end of file

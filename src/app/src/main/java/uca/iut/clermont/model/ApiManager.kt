@@ -7,7 +7,7 @@ import MatchesManager
 import PeopleManager
 import TeamsManager
 
-class StubData : DataManager() {
+class ApiManager : DataManager() {
     override val areaMgr: AreaManager = ApiAreaManager()
     override val peopleMgr: PeopleManager = ApiPeopleManager()
     override val matchesMgr: MatchesManager = ApiMatchesManager()
