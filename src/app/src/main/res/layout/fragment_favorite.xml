@@ -46,5 +46,4 @@
         app:layout_constraintTop_toBottomOf="@+id/exitContainer" />
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

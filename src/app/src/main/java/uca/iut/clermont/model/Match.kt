@@ -4,8 +4,8 @@ import java.util.Calendar
 
 class Match(
     val id: Int,
-    val idHomeTeam: Int,
-    val idAwayTeam: Int,
+    val homeTeam: Team,
+    val awayTeam: Team,
     val date: Calendar,
     val status: String,
     val score: Score
