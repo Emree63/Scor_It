@@ -165,24 +165,27 @@ skinparam package {
 hide circle
 
 interface GenericDataManager {
-    +getItemsByName(substring: String) : List<T>
     +getItems() : List<T>
     +getItemById(id: Int) : T
 }
 
 class TeamsManager {
+    +getItemsByName(substring: String) : List<Team>
 }
 
 class CompetitionsManager {
+    +getItemsByName(substring: String) : List<Competition>
 }
 
 class MatchesManager {
 }
 
 class PeopleManager {
+    +getItemsByName(substring: String) : List<People>
 }
 
 class AreaManager {
+    +getItemsByName(substring: String) : List<Area>
 }
 
 abstract class DataManager {
