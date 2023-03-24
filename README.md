@@ -115,9 +115,7 @@ class Season {
 
 class Match {
     -id: Int
-    -idHomeTeam: Int
     -score: Score
-    -idAwayTeam: Int
     -status: String
 }
 
@@ -137,6 +135,9 @@ Team --> "-staff*" Staff
 Team --> "-coach" Coach
 Team --> "-squad*" Player
 Team --> "-area" Area
+
+Match --> "-HomeTeam" Team
+Match --> "-AwayTeam" Team
 
 Competition --> "-area" Area
 Competition --> "-currentSeason" Season
