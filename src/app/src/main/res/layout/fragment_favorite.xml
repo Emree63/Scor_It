@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
     android:paddingVertical="30dp"
-    tools:context=".view.FavoriteActivity">
+    tools:context=".view.FavoriteFragment">
 
     <LinearLayout
         android:id="@+id/exitContainer"
@@ -17,19 +17,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/buttonHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:src="@drawable/arrow" />
 
-        <TextView
+        <Button
+            android:id="@+id/buttonTextHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
             android:fontFamily="@font/mulish_bold"
             android:text="Exit"
             android:textColor="@color/title"
-            android:textSize="26dp" />
+            android:textSize="26dp"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
@@ -45,6 +49,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exitContainer" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFavorites" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

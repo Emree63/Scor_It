@@ -13,7 +13,7 @@ class StubData : DataManager() {
     override val areaMgr: AreaManager = StubAreaManager(this)
     override val peopleMgr: PeopleManager = StubPeopleManager(this)
     override val matchesMgr: MatchesManager = StubMatchesManager(this)
-    override val competitionsMgr: CompetitionsManager = StubCompetitionsManager()
+    override val competitionsMgr: CompetitionsManager = StubCompetitionsManager(this)
     override val teamsMgr: TeamsManager = StubTeamsManager(this)
 
     private val areaList = listOf(
@@ -247,56 +247,76 @@ class StubData : DataManager() {
     )
 
     private val random = java.util.Random()
-    val matchList = listOf(
-        Match(
-            1,
-            1,
-            2,
-            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(1, 1, "DRAW")
-        ),
-        Match(
-            2,
-            3,
-            1,
-            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(2, 0, "HOME_TEAM")
-        ),
-        Match(
-            3,
-            2,
-            3,
-            Calendar.getInstance().apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(0, 4, "AWAY_TEAM")
-        ),
-        Match(
-            4,
-            1,
-            3,
-            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(0, 1, "AWAY_TEAM")
-        ),
-        Match(
-            5,
-            2,
-            1,
-            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(0, 0, "DRAW")
-        ),
-        Match(
-            6,
-            3,
-            2,
-            Calendar.getInstance().apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
-            "FINISHED",
-            Score(2, 0, "HOME_TEAM")
+    val matchList: MutableList<Match> = mutableListOf()
+
+    fun initMatches() {
+        matchList.add(
+            Match(
+                1,
+                teamList[0],
+                teamList[1],
+                Calendar.getInstance()
+                    .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(1, 1, "DRAW")
+            )
         )
-    )
+        matchList.add(
+            Match(
+                2,
+                teamList[2],
+                teamList[0],
+                Calendar.getInstance()
+                    .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(2, 0, "HOME_TEAM")
+            )
+        )
+        matchList.add(
+            Match(
+                3,
+                teamList[1],
+                teamList[2],
+                Calendar.getInstance()
+                    .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(0, 4, "AWAY_TEAM")
+            )
+        )
+        matchList.add(
+            Match(
+                4,
+                teamList[0],
+                teamList[2],
+                Calendar.getInstance()
+                    .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(0, 1, "AWAY_TEAM")
+            )
+        )
+        matchList.add(
+            Match(
+                5,
+                teamList[1],
+                teamList[0],
+                Calendar.getInstance()
+                    .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(0, 0, "DRAW")
+            )
+        )
+        matchList.add(
+            Match(
+                6,
+                teamList[2],
+                teamList[1],
+                Calendar.getInstance()
+                    .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
+                "FINISHED",
+                Score(2, 0, "HOME_TEAM")
+            )
+        )
+    }
 
     val teamList: MutableList<Team> = mutableListOf()
 
@@ -313,8 +333,8 @@ class StubData : DataManager() {
                 "Navy / Red",
                 areaList[0],
                 "Parc des Princes",
-                peopleList[0] as Coach,
-                listOf(peopleList[2] as Staff),
+                peopleList[13] as Coach,
+                listOf(peopleList[15] as Staff),
                 listOf(peopleList[0] as Player, peopleList[3] as Player, peopleList[11] as Player)
             )
         )
@@ -330,9 +350,9 @@ class StubData : DataManager() {
                 "Blue / Red",
                 areaList[3],
                 "Camp Nou",
-                peopleList[0] as Coach,
-                listOf(peopleList[2] as Staff),
-                listOf(peopleList[0] as Player, peopleList[5] as Player, peopleList[9] as Player)
+                peopleList[14] as Coach,
+                listOf(peopleList[16] as Staff),
+                listOf(peopleList[2] as Player, peopleList[5] as Player, peopleList[9] as Player)
             )
         )
         teamList.add(
@@ -347,9 +367,36 @@ class StubData : DataManager() {
                 "Red",
                 areaList[2],
                 "Anfield",
-                peopleList[1] as Coach,
-                listOf(peopleList[3] as Staff),
+                peopleList[14] as Coach,
+                listOf(peopleList[15] as Staff),
                 listOf(peopleList[7] as Player, peopleList[8] as Player, peopleList[10] as Player)
+            )
+        )
+    }
+
+    val competitionList: MutableList<Competition> = mutableListOf()
+
+    fun initCompetitions() {
+        competitionList.add(
+            Competition(
+                1,
+                "Campeonato Brasileiro Série A",
+                "BSA",
+                "LEAGUE",
+                "https://crests.football-data.org/764.svg",
+                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                areaList[2],
+            )
+        )
+        competitionList.add(
+            Competition(
+                2,
+                "Championship",
+                "ELC",
+                "LEAGUE",
+                "https://crests.football-data.org/PL.png",
+                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                areaList[2],
             )
         )
     }
@@ -375,8 +422,6 @@ class StubData : DataManager() {
     }
 
     class StubMatchesManager(private val parent: StubData) : MatchesManager {
-        override fun getItemsByName(substring: String) =
-            throw java.lang.Exception("Don't call this function")
 
         override fun getItems(): List<Match> = parent.matchList
 
@@ -384,18 +429,13 @@ class StubData : DataManager() {
 
     }
 
-    class StubCompetitionsManager : CompetitionsManager {
-        override fun getItemsByName(substring: String): List<Competition> {
-            throw java.lang.Exception("Don't call this function")
-        }
+    class StubCompetitionsManager(private val parent: StubData) : CompetitionsManager {
+        override fun getItemsByName(substring: String) =
+            parent.competitionList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems(): List<Competition> {
-            throw java.lang.Exception("Don't call this function")
-        }
+        override fun getItems() = parent.competitionList
 
-        override fun getItemById(id: Int): Competition? {
-            throw java.lang.Exception("Don't call this function")
-        }
+        override fun getItemById(id: Int) = parent.competitionList.find { it.id == id }
 
     }
 

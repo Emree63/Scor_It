@@ -45,9 +45,6 @@ class ApiManager : DataManager() {
     }
 
     class ApiMatchesManager : MatchesManager {
-        override fun getItemsByName(substring: String): List<Match> {
-            TODO("Not yet implemented")
-        }
 
         override fun getItems(): List<Match> {
             TODO("Not yet implemented")

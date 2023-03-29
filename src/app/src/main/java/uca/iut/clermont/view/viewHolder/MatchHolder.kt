@@ -6,11 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 
 class MatchHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val textView: TextView
+    val titleFirstTeam: TextView
+    val titleSecondTeam: TextView
+    val scoreHomeTeam: TextView
+    val scoreAwayTeam: TextView
 
     init {
-        // Define click listener for the ViewHolder's View
-        textView = view.findViewById(R.id.TitleFirstTeam)
+        titleFirstTeam = view.findViewById(R.id.TitleFirstTeam)
+        titleSecondTeam = view.findViewById(R.id.TitleSecondTeam)
+        scoreHomeTeam = view.findViewById(R.id.ScoreHomeTeam)
+        scoreAwayTeam = view.findViewById(R.id.ScoreAwayTeam)
     }
 
 
