@@ -12,12 +12,10 @@ class MatchHolder(view: View) : RecyclerView.ViewHolder(view) {
     val scoreAwayTeam: TextView
 
     init {
-        // Define click listener for the ViewHolder's View
         titleFirstTeam = view.findViewById(R.id.TitleFirstTeam)
         titleSecondTeam = view.findViewById(R.id.TitleSecondTeam)
         scoreHomeTeam = view.findViewById(R.id.ScoreHomeTeam)
         scoreAwayTeam = view.findViewById(R.id.ScoreAwayTeam)
-
     }
 
 

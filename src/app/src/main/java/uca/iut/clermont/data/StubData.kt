@@ -13,7 +13,7 @@ class StubData : DataManager() {
     override val areaMgr: AreaManager = StubAreaManager(this)
     override val peopleMgr: PeopleManager = StubPeopleManager(this)
     override val matchesMgr: MatchesManager = StubMatchesManager(this)
-    override val competitionsMgr: CompetitionsManager = StubCompetitionsManager()
+    override val competitionsMgr: CompetitionsManager = StubCompetitionsManager(this)
     override val teamsMgr: TeamsManager = StubTeamsManager(this)
 
     private val areaList = listOf(
@@ -374,6 +374,33 @@ class StubData : DataManager() {
         )
     }
 
+    val competitionList: MutableList<Competition> = mutableListOf()
+
+    fun initCompetitions() {
+        competitionList.add(
+            Competition(
+                1,
+                "Campeonato Brasileiro Série A",
+                "BSA",
+                "LEAGUE",
+                "https://crests.football-data.org/764.svg",
+                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                areaList[2],
+            )
+        )
+        competitionList.add(
+            Competition(
+                2,
+                "Championship",
+                "ELC",
+                "LEAGUE",
+                "https://crests.football-data.org/PL.png",
+                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                areaList[2],
+            )
+        )
+    }
+
 
     class StubAreaManager(private val parent: StubData) : AreaManager {
         override fun getItemsByName(substring: String) =
@@ -402,18 +429,13 @@ class StubData : DataManager() {
 
     }
 
-    class StubCompetitionsManager : CompetitionsManager {
-        override fun getItemsByName(substring: String): List<Competition> {
-            throw java.lang.Exception("Don't call this function")
-        }
+    class StubCompetitionsManager(private val parent: StubData) : CompetitionsManager {
+        override fun getItemsByName(substring: String) =
+            parent.competitionList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems(): List<Competition> {
-            throw java.lang.Exception("Don't call this function")
-        }
+        override fun getItems() = parent.competitionList
 
-        override fun getItemById(id: Int): Competition? {
-            throw java.lang.Exception("Don't call this function")
-        }
+        override fun getItemById(id: Int) = parent.competitionList.find { it.id == id }
 
     }
 

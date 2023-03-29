@@ -1,11 +1,11 @@
 package uca.iut.clermont.model
 
-import java.util.Date
+import java.util.Calendar
 
 class Season(
     val id: Int,
-    val startDate: Date,
-    val endDate: Date,
+    val startDate: Calendar,
+    val endDate: Calendar,
     val currentMatchday: Int,
-    val winner: Int
+    val winner: Int?
 )

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
@@ -22,12 +24,18 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val matches = (activity as MainActivity).manager.matchesMgr.getItems()
 
+        val buttonFavorite = view.findViewById<ImageButton>(R.id.buttonFavorite)
+
+        buttonFavorite.setOnClickListener {
+            findNavController().navigate(R.id.favoriteFragment)
+        }
+
         initRecyclerView(view, matches)
         return view
     }
 
     private fun initRecyclerView(view: View, matches: List<Match>) {
-        val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.ListRecentsMatches)
+        val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
         with(recyclerViewMatches) {
             layoutManager = LinearLayoutManager(view.context)
             adapter = MatchesAdapter(matches.toList().toTypedArray())

@@ -44,17 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         manager.initTeams()
         manager.initMatches()
+        manager.initCompetitions()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
 
         val navController = navHostFragment.navController
-
-        //val imageFirstTeam = findViewById<ImageView>(R.id.ImageFirstTeam)
-        /*Glide.with(this)
-            .load("https://crests.football-data.org/1765.svg")
-            .error(R.drawable.imagenotfound)
-            .into(imageFirstTeam)*/
 
     }
 
