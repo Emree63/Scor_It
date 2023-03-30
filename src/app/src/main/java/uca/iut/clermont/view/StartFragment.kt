@@ -10,8 +10,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import uca.iut.clermont.R
 
 
@@ -39,6 +41,11 @@ class StartFragment : Fragment(), SensorEventListener {
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
 
+        val buttonFavorite = view.findViewById<ImageButton>(R.id.nextButton)
+
+        buttonFavorite.setOnClickListener {
+            findNavController().navigate(R.id.detailFragment)
+        }
 
         return view
     }
@@ -53,12 +60,10 @@ class StartFragment : Fragment(), SensorEventListener {
         val angleY = y / 9.81f
 
         if (Math.abs(angleX) > 0.1) {
-            // Déplacer la balle à droite ou à gauche en fonction de la direction du mouvement
-            val deltaX = angleX * 20f // La vitesse de déplacement est de 20 pixels par seconde
+            val deltaX = angleX * 20f * if (angleX > 0) 1 else -1
             ObjectAnimator.ofFloat(ball, View.TRANSLATION_X, ball.x + deltaX).start()
 
-            // Faire tourner la balle pendant qu'elle se déplace
-            ObjectAnimator.ofFloat(ball, View.ROTATION, -angleX * 70f).start()
+            ObjectAnimator.ofFloat(ball, View.ROTATION, angleX * 3400f).start()
         }
 
         lastX = x

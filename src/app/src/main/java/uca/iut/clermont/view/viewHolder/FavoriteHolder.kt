@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 
-class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view)  {
+class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageFavorites: ImageView
     val textFavorites: TextView
 

@@ -8,7 +8,8 @@ import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
 import uca.iut.clermont.view.viewHolder.FavoriteHolder
 
-class FavoritesAdapter(private val favoriteCompetition: Array<Competition> ) : RecyclerView.Adapter<FavoriteHolder>() {
+class FavoritesAdapter(private val favoriteCompetition: Array<Competition>) :
+    RecyclerView.Adapter<FavoriteHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
         return FavoriteHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.cellule_favorite, parent, false)

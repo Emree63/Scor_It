@@ -31,9 +31,9 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/mulish_bold"
             android:text="Exit"
+            android:textAllCaps="false"
             android:textColor="@color/title"
-            android:textSize="26dp"
-            android:textAllCaps="false" />
+            android:textSize="26dp" />
 
     </LinearLayout>
 

@@ -16,13 +16,13 @@ import uca.iut.clermont.model.Match
 import uca.iut.clermont.view.adapter.FavoritesAdapter
 import uca.iut.clermont.view.adapter.MatchesAdapter
 
-class FavoriteFragment: Fragment() {
+class FavoriteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_favorite, container, false)
+        val view = inflater.inflate(R.layout.fragment_favorite, container, false)
 
         val competitions = (activity as MainActivity).manager.competitionsMgr.getItems()
         var buttonHome = view.findViewById<ImageButton>(R.id.buttonHome)

@@ -98,9 +98,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecentsMatches"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRecentMatches" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewRecentMatches"
+        tools:itemCount="100" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

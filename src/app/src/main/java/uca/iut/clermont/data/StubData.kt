@@ -326,7 +326,7 @@ class StubData : DataManager() {
                 1,
                 "Paris Saint-Germain FC",
                 "PSG",
-                "https://crests.football-data.org/524.svg",
+                "https://www.psg.fr/img/DefaultOpenGraphImage.jpg?20230329",
                 "24 Rue du Commandant Guilbaud, 75016 Paris, France",
                 "https://www.psg.fr/",
                 "1970",
@@ -343,7 +343,7 @@ class StubData : DataManager() {
                 2,
                 "FC Barcelona",
                 "BAR",
-                "https://crests.football-data.org/81.svg",
+                "https://upload.wikimedia.org/wikipedia/fr/thumb/a/a1/Logo_FC_Barcelona.svg/1200px-Logo_FC_Barcelona.svg.png",
                 "Carrer d'Aristides Maillol, s/n, 08028 Barcelona, Spain",
                 "https://www.fcbarcelona.com/",
                 "1899",
@@ -360,7 +360,7 @@ class StubData : DataManager() {
                 3,
                 "Liverpool FC",
                 "LIV",
-                "https://crests.football-data.org/64.svg",
+                "https://upload.wikimedia.org/wikipedia/fr/thumb/5/54/Logo_FC_Liverpool.svg/1200px-Logo_FC_Liverpool.svg.png",
                 "Anfield Road, Liverpool L4 0TH, United Kingdom",
                 "https://www.liverpoolfc.com/",
                 "1892",
@@ -384,7 +384,13 @@ class StubData : DataManager() {
                 "BSA",
                 "LEAGUE",
                 "https://crests.football-data.org/764.svg",
-                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                Season(
+                    1557,
+                    Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) },
+                    Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },
+                    1,
+                    null
+                ),
                 areaList[2],
             )
         )
@@ -395,7 +401,13 @@ class StubData : DataManager() {
                 "ELC",
                 "LEAGUE",
                 "https://crests.football-data.org/PL.png",
-                Season(1557, Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) }, Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },1, null),
+                Season(
+                    1557,
+                    Calendar.getInstance().apply { set(2023, Calendar.MARCH, 15) },
+                    Calendar.getInstance().apply { set(2022, Calendar.DECEMBER, 3) },
+                    1,
+                    null
+                ),
                 areaList[2],
             )
         )

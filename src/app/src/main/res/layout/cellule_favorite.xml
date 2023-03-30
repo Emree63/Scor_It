@@ -31,8 +31,6 @@
             android:textColor="@color/black"
             android:textSize="18dp" />
 
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
