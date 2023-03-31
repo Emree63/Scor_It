@@ -44,7 +44,7 @@ class StartFragment : Fragment(), SensorEventListener {
         val buttonFavorite = view.findViewById<ImageButton>(R.id.nextButton)
 
         buttonFavorite.setOnClickListener {
-            findNavController().navigate(R.id.detailFragment)
+            findNavController().navigate(R.id.homeFragment)
         }
 
         return view
