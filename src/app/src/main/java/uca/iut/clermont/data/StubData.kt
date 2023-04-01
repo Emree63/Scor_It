@@ -343,7 +343,7 @@ class StubData : DataManager() {
                 2,
                 "FC Barcelona",
                 "BAR",
-                "https://upload.wikimedia.org/wikipedia/fr/thumb/a/a1/Logo_FC_Barcelona.svg/1200px-Logo_FC_Barcelona.svg.png",
+                "https://crests.football-data.org/109.svg",
                 "Carrer d'Aristides Maillol, s/n, 08028 Barcelona, Spain",
                 "https://www.fcbarcelona.com/",
                 "1899",

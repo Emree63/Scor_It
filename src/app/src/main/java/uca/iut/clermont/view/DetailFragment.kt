@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
+import java.text.SimpleDateFormat
 
 class DetailFragment : Fragment() {
 
@@ -38,8 +39,10 @@ class DetailFragment : Fragment() {
     private fun initializeView(view: View) {
         val button = view.findViewById<ImageButton>(R.id.buttonLike)
         val buttonExit = view.findViewById<ImageButton>(R.id.buttonExit)
-        var ImageHeader = view.findViewById<ImageView>(R.id.imageDetail)
-        var titleHeader = view.findViewById<TextView>(R.id.title)
+        val imageHeader = view.findViewById<ImageView>(R.id.imageDetail)
+        val titleHeader = view.findViewById<TextView>(R.id.title)
+        val dateEnd = view.findViewById<TextView>(R.id.dateEnd)
+        val dateStart = view.findViewById<TextView>(R.id.dateStart)
 
         buttonExit.setOnClickListener {
             findNavController().navigate(R.id.favoriteFragment)
@@ -53,9 +56,22 @@ class DetailFragment : Fragment() {
         Glide.with(view.context)
             .load(competition.emblem)
             .error(R.drawable.imagenotfound)
-            .into(ImageHeader)
+            .into(imageHeader)
 
         titleHeader.text = competition.name
+        var date = competition.currentSeason.endDate
+
+        var formatter = SimpleDateFormat("dd-MM-yyyy")
+        var formattedDate = formatter.format(date.time)
+
+        dateEnd.text = formattedDate
+
+        date = competition.currentSeason.startDate
+
+        formatter = SimpleDateFormat("dd-MM-yyyy")
+        formattedDate = formatter.format(date.time)
+
+        dateStart.text = formattedDate
     }
 
 }
