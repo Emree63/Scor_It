@@ -119,12 +119,13 @@
             android:paddingHorizontal="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/nbMatches"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/mulish_bold"
                 android:maxLines="1"
-                android:text="14"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="26dp" />
 

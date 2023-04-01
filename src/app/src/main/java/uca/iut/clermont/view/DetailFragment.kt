@@ -10,9 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
+import uca.iut.clermont.view.adapter.MatchesAdapter
 import java.text.SimpleDateFormat
 
 class DetailFragment : Fragment() {
@@ -33,6 +36,8 @@ class DetailFragment : Fragment() {
         competition = (activity as MainActivity).manager.competitionsMgr.getItemById(id)!!
 
         initializeView(view)
+        initRecyclerView(view)
+
         return view;
     }
 
@@ -41,6 +46,7 @@ class DetailFragment : Fragment() {
         val buttonExit = view.findViewById<ImageButton>(R.id.buttonExit)
         val imageHeader = view.findViewById<ImageView>(R.id.imageDetail)
         val titleHeader = view.findViewById<TextView>(R.id.title)
+        val nbMatches = view.findViewById<TextView>(R.id.nbMatches)
         val dateEnd = view.findViewById<TextView>(R.id.dateEnd)
         val dateStart = view.findViewById<TextView>(R.id.dateStart)
 
@@ -72,6 +78,22 @@ class DetailFragment : Fragment() {
         formattedDate = formatter.format(date.time)
 
         dateStart.text = formattedDate
+
+        nbMatches.text =
+            (activity as MainActivity).manager.matchesMgr.getNbItemsByCompetition(competition.name)
+                .toString()
     }
 
+
+    private fun initRecyclerView(view: View) {
+        val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
+        with(recyclerViewMatches) {
+            layoutManager = LinearLayoutManager(view.context)
+            adapter = MatchesAdapter(
+                (activity as MainActivity).manager.matchesMgr.getItemsByCompetition(competition.name)
+                    .toList().toTypedArray()
+            )
+        }
+
+    }
 }

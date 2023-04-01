@@ -8,5 +8,6 @@ class Match(
     val awayTeam: Team,
     val date: Calendar,
     val status: String,
-    val score: Score
+    val score: Score,
+    val competition: Competition
 )

@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         manager.initTeams()
-        manager.initMatches()
         manager.initCompetitions()
+        manager.initMatches()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment

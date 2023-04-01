@@ -258,7 +258,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(1, 1, "DRAW")
+                Score(1, 1, "DRAW"),
+                competitionList[1]
             )
         )
         matchList.add(
@@ -269,7 +270,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(2, 0, "HOME_TEAM")
+                Score(2, 0, "HOME_TEAM"),
+                competitionList[0]
             )
         )
         matchList.add(
@@ -280,7 +282,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(0, 4, "AWAY_TEAM")
+                Score(0, 4, "AWAY_TEAM"),
+                competitionList[0]
             )
         )
         matchList.add(
@@ -291,7 +294,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(0, 1, "AWAY_TEAM")
+                Score(0, 1, "AWAY_TEAM"),
+                competitionList[0]
             )
         )
         matchList.add(
@@ -302,7 +306,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(0, 0, "DRAW")
+                Score(0, 0, "DRAW"),
+                competitionList[1]
             )
         )
         matchList.add(
@@ -313,7 +318,8 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2023, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(2, 0, "HOME_TEAM")
+                Score(2, 0, "HOME_TEAM"),
+                competitionList[0]
             )
         )
     }
@@ -434,6 +440,11 @@ class StubData : DataManager() {
     }
 
     class StubMatchesManager(private val parent: StubData) : MatchesManager {
+        override fun getNbItemsByCompetition(substring: String) =
+            parent.matchList.filter { it.competition.name.contains(substring) }.count()
+
+        override fun getItemsByCompetition(substring: String) =
+            parent.matchList.filter { it.competition.name.contains(substring) }
 
         override fun getItems(): List<Match> = parent.matchList
 

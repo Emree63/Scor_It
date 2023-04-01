@@ -34,11 +34,10 @@ class FavoritesAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
-        return FavoriteHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.cellule_favorite, parent, false)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = FavoriteHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.cellule_favorite, parent, false)
+    )
+
 
     override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
         holder.textFavorites.text = favoriteCompetition[position].name

@@ -138,6 +138,7 @@ Team --> "-area" Area
 
 Match --> "-HomeTeam" Team
 Match --> "-AwayTeam" Team
+Match --> "-competition" Competition
 
 Competition --> "-area" Area
 Competition --> "-currentSeason" Season
