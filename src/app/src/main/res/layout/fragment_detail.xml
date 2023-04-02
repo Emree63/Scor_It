@@ -8,12 +8,14 @@
 
     <ImageView
         android:id="@+id/imageDetail"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -24,8 +26,8 @@
         android:layout_marginTop="15dp"
         android:background="@android:color/transparent"
         android:src="@drawable/exit_button"
-        app:layout_constraintStart_toStartOf="@+id/imageDetail"
-        app:layout_constraintTop_toTopOf="@+id/imageDetail" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonLike"
@@ -35,17 +37,16 @@
         android:layout_marginRight="15dp"
         android:background="@android:color/transparent"
         android:src="@drawable/empty_like"
-        app:layout_constraintEnd_toEndOf="@+id/imageDetail"
-        app:layout_constraintTop_toTopOf="@+id/imageDetail" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewRecentMatches"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/mulish_black"
-        android:text="CA Paranaense"
-        android:textColor="#FF2B2B"
+        android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +63,7 @@
         android:textColor="@color/title"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRecentMatches" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <LinearLayout
         android:id="@+id/header"
@@ -77,17 +78,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/background"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="10dp">
 
             <TextView
+                android:id="@+id/dateStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/mulish_bold"
                 android:maxLines="2"
-                android:text="2023-04-15"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -113,18 +114,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/nbMatches"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/mulish_bold"
                 android:maxLines="1"
-                android:text="14"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="26dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -148,17 +151,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/background"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="10dp">
 
             <TextView
+                android:id="@+id/dateEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/mulish_bold"
                 android:maxLines="3"
-                android:text="2023-12-15"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20dp" />

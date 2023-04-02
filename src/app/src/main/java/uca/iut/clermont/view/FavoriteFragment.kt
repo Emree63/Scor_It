@@ -24,8 +24,20 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
         var competitions = (activity as MainActivity).manager.competitionsMgr.getItems()
+
+        initRecyclerView(view, competitions, this)
+        initializeView(view)
+
+        return view
+    }
+
+    private fun navigate() {
+        findNavController().navigate(R.id.homeFragment)
+    }
+
+    private fun initializeView(view: View) {
         var buttonHome = view.findViewById<ImageButton>(R.id.buttonHome)
-        val buttonTextFavorite = view.findViewById<Button>(R.id.buttonTextHome)
+        var buttonTextFavorite = view.findViewById<Button>(R.id.buttonTextHome)
 
         buttonHome.setOnClickListener {
             navigate()
@@ -33,17 +45,14 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
         buttonTextFavorite.setOnClickListener {
             navigate()
         }
-        initRecyclerView(view, competitions, this)
-        return view
+
     }
 
-    fun navigate() {
-        findNavController().navigate(R.id.homeFragment)
-    }
-
-
-
-    private fun initRecyclerView(view: View, favorites: List<Competition>, listener: FavoritesAdapter.OnItemClickListener) {
+    private fun initRecyclerView(
+        view: View,
+        favorites: List<Competition>,
+        listener: FavoritesAdapter.OnItemClickListener
+    ) {
         val recyclerViewFavorites = view.findViewById<RecyclerView>(R.id.listFavorites)
         with(recyclerViewFavorites) {
             layoutManager = LinearLayoutManager(view.context)
