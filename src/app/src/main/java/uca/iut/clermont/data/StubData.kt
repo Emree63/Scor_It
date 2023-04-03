@@ -258,7 +258,7 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(1, 1, "DRAW"),
+                Score(2, 1, "DRAW"),
                 competitionList[1]
             )
         )
@@ -270,7 +270,7 @@ class StubData : DataManager() {
                 Calendar.getInstance()
                     .apply { set(2022, random.nextInt(12), random.nextInt(28) + 1) },
                 "FINISHED",
-                Score(2, 0, "HOME_TEAM"),
+                Score(2, 3, "HOME_TEAM"),
                 competitionList[0]
             )
         )
