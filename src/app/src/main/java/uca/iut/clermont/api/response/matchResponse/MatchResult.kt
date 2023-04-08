@@ -22,7 +22,7 @@ class MatchResult(
         homeTeam.toModel(),
         awayTeam.toModel(),
         Calendar.getInstance().apply {
-            time = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US).parse(utcDate)
+            time = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US).parse(utcDate) as Date
         },
         status,
         score.toModel(),

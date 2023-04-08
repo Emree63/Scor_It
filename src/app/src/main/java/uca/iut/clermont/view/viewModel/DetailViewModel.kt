@@ -30,8 +30,7 @@ class DetailViewModel : ViewModel() {
             .sortedByDescending { it.date }
     }
 
-    fun loadNumberMatches(id: Int) = viewModelScope.launch {
-        val nb = manager.matchesMgr.getNbItemsByCompetition(id)
-        nbCompetitionMatches.value = nb
+    fun loadNumberMatches() = viewModelScope.launch {
+        nbCompetitionMatches.value = competitionMatches.value?.size
     }
 }
