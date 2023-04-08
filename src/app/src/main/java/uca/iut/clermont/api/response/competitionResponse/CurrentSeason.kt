@@ -13,13 +13,14 @@ data class CurrentSeason(
 ) {
     fun toModel(): Season {
         val calendar = Calendar.getInstance()
+        val calendar2 = Calendar.getInstance()
         return Season(
             id,
             calendar.apply {
-                time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(startDate)
+                time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(startDate) as Date
             },
-             calendar.apply {
-                time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(endDate)
+             calendar2.apply {
+                time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(endDate) as Date
             },
              currentMatchday,
              if (winner is Int) winner else null

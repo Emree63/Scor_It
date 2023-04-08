@@ -50,10 +50,8 @@ class ApiManager : DataManager() {
 
         override suspend fun getItemById(id: Int): Personne? = coroutineScope {
             val personne = footballApi.getPlayer(id)
-            personne?.let {
-                return@coroutineScope personne.toModel()
-            }
-            return@coroutineScope null
+            return@coroutineScope personne.toModel()
+
         }
     }
 

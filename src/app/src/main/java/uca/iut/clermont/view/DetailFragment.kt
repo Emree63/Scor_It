@@ -55,11 +55,10 @@ class DetailFragment : Fragment() {
             }
         })
 
-        viewModel.loadNumberMatches(id)
-
         viewModel.competitionMatches.observe(viewLifecycleOwner, Observer { competitions ->
             competitions?.let {
                 initRecyclerView(view)
+                viewModel.loadNumberMatches()
             }
         })
 

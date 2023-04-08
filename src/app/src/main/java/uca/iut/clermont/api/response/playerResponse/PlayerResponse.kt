@@ -22,15 +22,15 @@ data class PlayerResponse(
         lastName,
         name,
         Calendar.getInstance().apply {
-            time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(dateOfBirth)
+            time = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(dateOfBirth) as Date
         },
         nationality,
         Contract(
             Calendar.getInstance().apply {
-                time = SimpleDateFormat("yyyy-MM", Locale.US).parse(currentTeam.contract.start)
+                time = SimpleDateFormat("yyyy-MM", Locale.US).parse(currentTeam.contract.start) as Date
             },
             Calendar.getInstance().apply {
-                time = SimpleDateFormat("yyyy-MM", Locale.US).parse(currentTeam.contract.until)
+                time = SimpleDateFormat("yyyy-MM", Locale.US).parse(currentTeam.contract.until) as Date
             }
         )
     )
