@@ -9,12 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
-import uca.iut.clermont.view.adapter.MatchesAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
