@@ -246,7 +246,7 @@ class StubData : DataManager() {
         )
     )
 
-    private val random = java.util.Random()
+    private val random = Random()
     val matchList: MutableList<Match> = mutableListOf()
 
     fun initMatches() {
@@ -421,7 +421,7 @@ class StubData : DataManager() {
 
 
     class StubAreaManager(private val parent: StubData) : AreaManager {
-        override fun getItemsByName(substring: String) =
+        override suspend fun getItemsByName(substring: String) =
             parent.areaList.filter { it.name.contains(substring, ignoreCase = true) }
 
         override suspend fun getItems(): List<Area> = parent.areaList
@@ -431,8 +431,6 @@ class StubData : DataManager() {
     }
 
     class StubPeopleManager(private val parent: StubData) : PeopleManager {
-        override fun getItemsByName(substring: String) =
-            parent.peopleList.filter { it.name.contains(substring, ignoreCase = true) }
 
         override suspend fun getItems() = parent.peopleList
 
@@ -440,11 +438,12 @@ class StubData : DataManager() {
     }
 
     class StubMatchesManager(private val parent: StubData) : MatchesManager {
-        override fun getNbItemsByCompetition(substring: String) =
-            parent.matchList.filter { it.competition.name.contains(substring) }.count()
 
-        override fun getItemsByCompetition(substring: String) =
-            parent.matchList.filter { it.competition.name.contains(substring) }
+        override suspend fun getNbItemsByCompetition(id: Int) =
+            parent.matchList.filter { it.competition.id == id }.size
+
+        override suspend fun getItemsByCompetition(id: Int) =
+            parent.matchList.filter { it.competition.id == id }
 
         override suspend fun getItems(): List<Match> = parent.matchList
 
@@ -453,7 +452,7 @@ class StubData : DataManager() {
     }
 
     class StubCompetitionsManager(private val parent: StubData) : CompetitionsManager {
-        override fun getItemsByName(substring: String) =
+        override suspend fun getItemsByName(substring: String) =
             parent.competitionList.filter { it.name.contains(substring, ignoreCase = true) }
 
         override suspend fun getItems() = parent.competitionList

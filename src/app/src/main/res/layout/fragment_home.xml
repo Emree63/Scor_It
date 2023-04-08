@@ -20,7 +20,7 @@
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello"
+            android:text="@string/hello"
             android:textColor="@color/title"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -29,10 +29,11 @@
             android:id="@+id/buttonFavorite"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/icon_like" />
+            android:src="@drawable/icon_like"
+            android:contentDescription="@string/imageNotFound" />
 
     </FrameLayout>
 
@@ -95,21 +96,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBarContainer" />
 
+    <ImageButton
+        android:id="@+id/restartMatches"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/restart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBarContainer" />
+
     <TextView
         android:id="@+id/textEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/title"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecentMatches" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecentsMatches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecentMatches"

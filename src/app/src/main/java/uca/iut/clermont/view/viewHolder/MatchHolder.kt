@@ -13,6 +13,7 @@ class MatchHolder(view: View) : RecyclerView.ViewHolder(view) {
     val scoreAwayTeam: TextView
     val imageHomeTeam: ImageView
     val imageAwayTeam: ImageView
+    val iconStatus: ImageView
     val dateCompetition: TextView
 
     init {
@@ -23,6 +24,7 @@ class MatchHolder(view: View) : RecyclerView.ViewHolder(view) {
         imageHomeTeam = view.findViewById(R.id.ImageFirstTeam)
         imageAwayTeam = view.findViewById(R.id.ImageSecondTeam)
         dateCompetition = view.findViewById(R.id.DateCompetition)
+        iconStatus = view.findViewById(R.id.iconStatus)
 
     }
 

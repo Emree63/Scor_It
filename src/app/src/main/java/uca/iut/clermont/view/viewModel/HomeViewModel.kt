@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import uca.iut.clermont.api.ApiManager
 import uca.iut.clermont.model.Match
+import java.util.*
 
 class HomeViewModel : ViewModel() {
 
@@ -13,8 +14,11 @@ class HomeViewModel : ViewModel() {
     val matches = MutableLiveData<List<Match>?>()
 
     fun loadMatches() = viewModelScope.launch {
-        val matchResult = manager.matchesMgr.getItems()
-        matches.value = matchResult.filter { it.status == "FINISHED" }
+        val matchResults = manager.matchesMgr.getItems()
+        matches.value = matchResults.filter { it.status != "TIMED" }
+            .apply { forEach { it.date.add(Calendar.HOUR_OF_DAY, 2) } }
+            .sortedBy { it.competition.name }
+            .sortedByDescending { it.date }
     }
 
 }

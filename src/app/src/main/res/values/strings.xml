@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Scor_It</string>
+    <string name="noMatches">No games started yet!</string>
+    <string name="imageNotFound">Image not found</string>
+    <string name="hello">Hello</string>
+
 </resources>

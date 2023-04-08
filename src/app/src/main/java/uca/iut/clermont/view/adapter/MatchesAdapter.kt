@@ -33,11 +33,41 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
         }
 
         val date = recentMatches[position].date
-
-        val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val formatter = SimpleDateFormat("dd/MM/yyyy' 'HH:mm", Locale.US)
         val formattedDate = formatter.format(date.time)
 
-        holder.dateCompetition.text = recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
+        with(holder.iconStatus) {
+            setImageResource(R.drawable.mi_temp)
+            layoutParams.width = 0
+            layoutParams.height = 0
+            (layoutParams as ViewGroup.MarginLayoutParams).apply {
+                topMargin = 8
+                bottomMargin = 7
+            }
+        }
+
+        if (recentMatches[position].status == "IN_PLAY") {
+            with(holder.iconStatus) {
+                setImageResource(R.drawable.live)
+                layoutParams.width = 130
+                layoutParams.height = 130
+                (layoutParams as ViewGroup.MarginLayoutParams).apply {
+                    topMargin = 0
+                    bottomMargin = 0
+                }
+            }
+        }
+
+        if (recentMatches[position].status == "PAUSED") {
+            with(holder.iconStatus) {
+                setImageResource(R.drawable.mi_temp)
+                layoutParams.width = 100
+                layoutParams.height = 100
+            }
+        }
+
+        holder.dateCompetition.text =
+            recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
 
         Glide.with(holder.itemView.context)
             .load(recentMatches[position].homeTeam.crest)
