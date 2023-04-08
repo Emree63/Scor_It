@@ -79,21 +79,21 @@ class DetailFragment : Fragment() {
 
         dateStart.text = formattedDate
 
-        nbMatches.text =
+        /*nbMatches.text =
             (activity as MainActivity).manager.matchesMgr.getNbItemsByCompetition(competition.name)
-                .toString()
+                .toString()*/
     }
 
 
     private fun initRecyclerView(view: View) {
-        val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
+        /*val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
         with(recyclerViewMatches) {
             layoutManager = LinearLayoutManager(view.context)
             adapter = MatchesAdapter(
                 (activity as MainActivity).manager.matchesMgr.getItemsByCompetition(competition.name)
                     .toList().toTypedArray()
             )
-        }
+        }*/
 
     }
 }

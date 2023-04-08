@@ -9,22 +9,20 @@ abstract class DataManager {
 }
 
 interface AreaManager : GenericDataManager<Area> {
-    fun getItemsByName(substring: String): List<Area>
+    suspend fun getItemsByName(substring: String): List<Area>
 }
 
-interface PeopleManager : GenericDataManager<Personne> {
-    fun getItemsByName(substring: String): List<Personne>
-}
+interface PeopleManager : GenericDataManager<Personne> {}
 
 interface MatchesManager : GenericDataManager<Match> {
-    fun getNbItemsByCompetition(substring: String): Int
+    suspend fun getNbItemsByCompetition(id: Int): Int
 
-    fun getItemsByCompetition(substring: String): List<Match>
+    suspend fun getItemsByCompetition(id: Int): List<Match>
 
 }
 
 interface CompetitionsManager : GenericDataManager<Competition> {
-    fun getItemsByName(substring: String): List<Competition>
+    suspend fun getItemsByName(substring: String): List<Competition>
 }
 
 interface TeamsManager : GenericDataManager<Team> {
