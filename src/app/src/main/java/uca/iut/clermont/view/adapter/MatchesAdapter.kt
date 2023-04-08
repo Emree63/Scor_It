@@ -2,6 +2,7 @@ package uca.iut.clermont.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
@@ -33,9 +34,30 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
         }
 
         val date = recentMatches[position].date
-
-        val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        date.add(Calendar.HOUR_OF_DAY, 2)
+        val formatter = SimpleDateFormat("dd/MM/yyyy' 'HH:mm", Locale.US)
         val formattedDate = formatter.format(date.time)
+
+        if (recentMatches[position].status == "IN_PLAY") {
+            with(holder.iconStatus) {
+                setImageResource(R.drawable.live)
+                layoutParams.width = 130
+                layoutParams.height = 130
+                (layoutParams as ViewGroup.MarginLayoutParams).apply {
+                    topMargin = 0
+                    bottomMargin = 0
+                }
+            }
+
+        }
+
+        if (recentMatches[position].status == "PAUSED") {
+            with(holder.iconStatus) {
+                setImageResource(R.drawable.mi_temp)
+                layoutParams.width = 100
+                layoutParams.height = 100
+            }
+        }
 
         holder.dateCompetition.text = recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
 

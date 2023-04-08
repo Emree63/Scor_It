@@ -14,7 +14,7 @@ class HomeViewModel : ViewModel() {
 
     fun loadMatches() = viewModelScope.launch {
         val matchResult = manager.matchesMgr.getItems()
-        matches.value = matchResult.filter { it.status == "FINISHED" }
+        matches.value = matchResult.filter { it.status != "TIMED" }.sortedByDescending { it.date }
     }
 
 }
