@@ -8,6 +8,7 @@ import uca.iut.clermont.R
 import uca.iut.clermont.model.Match
 import uca.iut.clermont.view.viewHolder.MatchHolder
 import java.text.SimpleDateFormat
+import java.util.*
 
 class MatchesAdapter(private val recentMatches: Array<Match>) :
     RecyclerView.Adapter<MatchHolder>() {
@@ -19,15 +20,24 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
     override fun onBindViewHolder(holder: MatchHolder, position: Int) {
         holder.titleFirstTeam.text = recentMatches[position].homeTeam.name
         holder.titleSecondTeam.text = recentMatches[position].awayTeam.name
-        holder.scoreHomeTeam.text = recentMatches[position].score.home.toString()
-        holder.scoreAwayTeam.text = recentMatches[position].score.away.toString()
+        if (recentMatches[position].score.home != null) {
+            holder.scoreHomeTeam.text = recentMatches[position].score.home.toString()
+        } else {
+            holder.scoreHomeTeam.text = "0"
+        }
 
-        var date = recentMatches[position].date
+        if (recentMatches[position].score.away != null) {
+            holder.scoreAwayTeam.text = recentMatches[position].score.away.toString()
+        } else {
+            holder.scoreAwayTeam.text = "0"
+        }
 
-        var formatter = SimpleDateFormat("dd-MM-yyyy")
-        var formattedDate = formatter.format(date.time)
+        val date = recentMatches[position].date
 
-        holder.dateCompetition.text = recentMatches[position].competition.name + " : " + formattedDate
+        val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val formattedDate = formatter.format(date.time)
+
+        holder.dateCompetition.text = recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
 
         Glide.with(holder.itemView.context)
             .load(recentMatches[position].homeTeam.crest)

@@ -16,6 +16,7 @@ import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
 import uca.iut.clermont.view.adapter.MatchesAdapter
 import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailFragment : Fragment() {
 
@@ -32,7 +33,7 @@ class DetailFragment : Fragment() {
 
         val id = arguments?.getInt("idItem")!!
 
-        competition = (activity as MainActivity).manager.competitionsMgr.getItemById(id)!!
+        //competition = (activity as MainActivity).manager.competitionsMgr.getItemById(id)!!
 
         initializeView(view)
         initRecyclerView(view)
@@ -66,14 +67,14 @@ class DetailFragment : Fragment() {
         titleHeader.text = competition.name
         var date = competition.currentSeason.endDate
 
-        var formatter = SimpleDateFormat("dd-MM-yyyy")
+        var formatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
         var formattedDate = formatter.format(date.time)
 
         dateEnd.text = formattedDate
 
         date = competition.currentSeason.startDate
 
-        formatter = SimpleDateFormat("dd-MM-yyyy")
+        formatter = SimpleDateFormat("dd-MM-yyyy", Locale.US)
         formattedDate = formatter.format(date.time)
 
         dateStart.text = formattedDate

@@ -6,16 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
 import uca.iut.clermont.view.adapter.FavoritesAdapter
+import uca.iut.clermont.view.viewModel.FavoriteViewModel
 
 class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
+
+    private val viewModel: FavoriteViewModel by viewModels<FavoriteViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +29,14 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
-        var competitions = (activity as MainActivity).manager.competitionsMgr.getItems()
+        viewModel.competitions.observe(viewLifecycleOwner, Observer { competitions ->
+            competitions?.let {
+                initRecyclerView(view, competitions, this)
+            }
+        })
 
-        initRecyclerView(view, competitions, this)
+        viewModel.loadCompetitions()
+
         initializeView(view)
 
         return view
@@ -36,8 +47,8 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
     }
 
     private fun initializeView(view: View) {
-        var buttonHome = view.findViewById<ImageButton>(R.id.buttonHome)
-        var buttonTextFavorite = view.findViewById<Button>(R.id.buttonTextHome)
+        val buttonHome = view.findViewById<ImageButton>(R.id.buttonHome)
+        val buttonTextFavorite = view.findViewById<Button>(R.id.buttonTextHome)
 
         buttonHome.setOnClickListener {
             navigate()
@@ -61,8 +72,8 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        var competitions = (activity as MainActivity).manager.competitionsMgr.getItems()
+        /*val competitions = viewModel.competitions
         val bundle = bundleOf("idItem" to competitions[position].id)
-        findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
+        findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)*/
     }
 }

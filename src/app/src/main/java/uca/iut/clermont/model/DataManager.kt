@@ -6,7 +6,6 @@ abstract class DataManager {
     abstract val matchesMgr: MatchesManager
     abstract val competitionsMgr: CompetitionsManager
     abstract val teamsMgr: TeamsManager
-
 }
 
 interface AreaManager : GenericDataManager<Area> {

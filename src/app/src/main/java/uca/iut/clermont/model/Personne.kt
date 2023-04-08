@@ -2,7 +2,7 @@ package uca.iut.clermont.model
 
 import java.util.Calendar
 
-abstract class Personne(
+open class Personne(
     val id: Int,
     val firstName: String,
     val lastName: String,

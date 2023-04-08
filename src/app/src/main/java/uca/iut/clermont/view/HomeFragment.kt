@@ -5,15 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Match
 import uca.iut.clermont.view.adapter.MatchesAdapter
+import uca.iut.clermont.view.viewModel.HomeViewModel
 
 class HomeFragment : Fragment() {
+
+    val viewModel: HomeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +28,20 @@ class HomeFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val matches = (activity as MainActivity).manager.matchesMgr.getItems()
+
+        val text = view.findViewById<TextView>(R.id.textEmpty)
+
+        viewModel.matches.observe(viewLifecycleOwner, Observer { matches ->
+            matches?.let {
+                if (it.isNotEmpty()) {
+                    initRecyclerView(view, it)
+                } else {
+                    text.setText("No games started yet!")
+                }
+            }
+        })
+
+        viewModel.loadMatches()
 
         val buttonFavorite = view.findViewById<ImageButton>(R.id.buttonFavorite)
 
@@ -30,7 +49,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.favoriteFragment)
         }
 
-        initRecyclerView(view, matches)
         return view
     }
 

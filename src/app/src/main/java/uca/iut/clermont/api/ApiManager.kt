@@ -1,4 +1,4 @@
-package uca.iut.clermont.model
+package uca.iut.clermont.api
 
 import AreaManager
 import CompetitionsManager
@@ -6,6 +6,19 @@ import DataManager
 import MatchesManager
 import PeopleManager
 import TeamsManager
+import kotlinx.coroutines.coroutineScope
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import uca.iut.clermont.model.*
+import java.text.SimpleDateFormat
+import java.util.*
+
+val retrofit: Retrofit = Retrofit.Builder()
+    .baseUrl("https://api.football-data.org/v4/")
+    .addConverterFactory(GsonConverterFactory.create())
+    .build()
+
+val footballApi: FootballApi = retrofit.create(FootballApi::class.java)
 
 class ApiManager : DataManager() {
     override val areaMgr: AreaManager = ApiAreaManager()
@@ -15,33 +28,38 @@ class ApiManager : DataManager() {
     override val teamsMgr: TeamsManager = ApiTeamsManager()
 
     class ApiAreaManager : AreaManager {
+
         override fun getItemsByName(substring: String): List<Area> {
             TODO("Not yet implemented")
         }
 
-        override fun getItems(): List<Area> {
+        override suspend fun getItems(): List<Area> {
             TODO("Not yet implemented")
         }
 
-        override fun getItemById(id: Int): Area? {
+        override suspend fun getItemById(id: Int): Area? {
             TODO("Not yet implemented")
         }
 
     }
 
     class ApiPeopleManager : PeopleManager {
+
         override fun getItemsByName(substring: String): List<Personne> {
             TODO("Not yet implemented")
         }
 
-        override fun getItems(): List<Personne> {
+        override suspend fun getItems(): List<Personne> {
             TODO("Not yet implemented")
         }
 
-        override fun getItemById(id: Int): Personne? {
-            TODO("Not yet implemented")
+        override suspend fun getItemById(id: Int): Personne? = coroutineScope {
+            val personne = footballApi.getPlayer(id)
+            personne?.let {
+                return@coroutineScope personne.toModel()
+            }
+            return@coroutineScope null
         }
-
     }
 
     class ApiMatchesManager : MatchesManager {
@@ -53,11 +71,12 @@ class ApiManager : DataManager() {
             TODO("Not yet implemented")
         }
 
-        override fun getItems(): List<Match> {
-            TODO("Not yet implemented")
+        override suspend fun getItems(): List<Match> = coroutineScope {
+            val matches = footballApi.getMatches()
+            return@coroutineScope matches.matches.map { matchResult -> matchResult.toModel() }
         }
 
-        override fun getItemById(id: Int): Match? {
+        override suspend fun getItemById(id: Int): Match? {
             TODO("Not yet implemented")
         }
 
@@ -68,11 +87,12 @@ class ApiManager : DataManager() {
             TODO("Not yet implemented")
         }
 
-        override fun getItems(): List<Competition> {
-            TODO("Not yet implemented")
+        override suspend fun getItems(): List<Competition> = coroutineScope {
+            val competitons = footballApi.getCompetitions()
+            return@coroutineScope competitons.competitions.map { competitionResult -> competitionResult.toModel()  }.sortedBy { it.name }
         }
 
-        override fun getItemById(id: Int): Competition? {
+        override suspend fun getItemById(id: Int): Competition? {
             TODO("Not yet implemented")
         }
 
@@ -83,11 +103,11 @@ class ApiManager : DataManager() {
             TODO("Not yet implemented")
         }
 
-        override fun getItems(): List<Team> {
+        override suspend fun getItems(): List<Team> {
             TODO("Not yet implemented")
         }
 
-        override fun getItemById(id: Int): Team? {
+        override suspend fun getItemById(id: Int): Team? {
             TODO("Not yet implemented")
         }
 

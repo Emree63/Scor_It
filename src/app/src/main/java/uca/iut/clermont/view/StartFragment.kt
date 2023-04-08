@@ -11,13 +11,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.marginStart
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import uca.iut.clermont.R
+import uca.iut.clermont.view.viewModel.HomeViewModel
 
 
 class StartFragment : Fragment(), SensorEventListener {
+
 
     private lateinit var ball: ImageView
     private lateinit var sensorManager: SensorManager

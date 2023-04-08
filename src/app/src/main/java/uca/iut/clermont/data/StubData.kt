@@ -424,9 +424,9 @@ class StubData : DataManager() {
         override fun getItemsByName(substring: String) =
             parent.areaList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems(): List<Area> = parent.areaList
+        override suspend fun getItems(): List<Area> = parent.areaList
 
-        override fun getItemById(id: Int) = parent.areaList.find { it.id == id }
+        override suspend fun getItemById(id: Int) = parent.areaList.find { it.id == id }
 
     }
 
@@ -434,9 +434,9 @@ class StubData : DataManager() {
         override fun getItemsByName(substring: String) =
             parent.peopleList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems() = parent.peopleList
+        override suspend fun getItems() = parent.peopleList
 
-        override fun getItemById(id: Int) = parent.peopleList.find { it.id == id }
+        override suspend fun getItemById(id: Int) = parent.peopleList.find { it.id == id }
     }
 
     class StubMatchesManager(private val parent: StubData) : MatchesManager {
@@ -446,9 +446,9 @@ class StubData : DataManager() {
         override fun getItemsByCompetition(substring: String) =
             parent.matchList.filter { it.competition.name.contains(substring) }
 
-        override fun getItems(): List<Match> = parent.matchList
+        override suspend fun getItems(): List<Match> = parent.matchList
 
-        override fun getItemById(id: Int) = parent.matchList.find { it.id == id }
+        override suspend fun getItemById(id: Int) = parent.matchList.find { it.id == id }
 
     }
 
@@ -456,9 +456,9 @@ class StubData : DataManager() {
         override fun getItemsByName(substring: String) =
             parent.competitionList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems() = parent.competitionList
+        override suspend fun getItems() = parent.competitionList
 
-        override fun getItemById(id: Int) = parent.competitionList.find { it.id == id }
+        override suspend fun getItemById(id: Int) = parent.competitionList.find { it.id == id }
 
     }
 
@@ -466,9 +466,9 @@ class StubData : DataManager() {
         override fun getItemsByName(substring: String) =
             parent.teamList.filter { it.name.contains(substring, ignoreCase = true) }
 
-        override fun getItems() = parent.teamList
+        override suspend fun getItems() = parent.teamList
 
-        override fun getItemById(id: Int) = parent.teamList.find { it.id == id }
+        override suspend fun getItemById(id: Int) = parent.teamList.find { it.id == id }
 
     }
 }
