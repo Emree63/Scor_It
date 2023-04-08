@@ -36,6 +36,16 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
         val formatter = SimpleDateFormat("dd/MM/yyyy' 'HH:mm", Locale.US)
         val formattedDate = formatter.format(date.time)
 
+        with(holder.iconStatus) {
+            setImageResource(R.drawable.mi_temp)
+            layoutParams.width = 0
+            layoutParams.height = 0
+            (layoutParams as ViewGroup.MarginLayoutParams).apply {
+                topMargin = 8
+                bottomMargin = 7
+            }
+        }
+
         if (recentMatches[position].status == "IN_PLAY") {
             with(holder.iconStatus) {
                 setImageResource(R.drawable.live)
@@ -46,7 +56,6 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
                     bottomMargin = 0
                 }
             }
-
         }
 
         if (recentMatches[position].status == "PAUSED") {
@@ -57,7 +66,8 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
             }
         }
 
-        holder.dateCompetition.text = recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
+        holder.dateCompetition.text =
+            recentMatches[position].competition.name.plus(" : ").plus(formattedDate)
 
         Glide.with(holder.itemView.context)
             .load(recentMatches[position].homeTeam.crest)

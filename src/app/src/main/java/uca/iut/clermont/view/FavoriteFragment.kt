@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -19,7 +20,7 @@ import uca.iut.clermont.view.viewModel.FavoriteViewModel
 
 class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
 
-    private val viewModel: FavoriteViewModel by viewModels<FavoriteViewModel>()
+    private val viewModel: FavoriteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,8 +71,8 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        /*val competitions = viewModel.competitions
+        val competitions = viewModel.competitions.value!!
         val bundle = bundleOf("idItem" to competitions[position].id)
-        findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)*/
+        findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
     }
 }

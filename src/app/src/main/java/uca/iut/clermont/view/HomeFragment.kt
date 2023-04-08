@@ -19,7 +19,7 @@ import uca.iut.clermont.view.viewModel.HomeViewModel
 
 class HomeFragment : Fragment() {
 
-    val viewModel: HomeViewModel by viewModels<HomeViewModel>()
+    val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,19 +38,19 @@ class HomeFragment : Fragment() {
                 if (it.isNotEmpty()) {
                     initRecyclerView(view, it)
                 } else {
-                    text.setText("No games started yet!")
+                    text.setText(R.string.noMatches)
                 }
             }
         })
 
-        displayMatches(view)
+        displayMatches()
 
         buttonFavorite.setOnClickListener {
             findNavController().navigate(R.id.favoriteFragment)
         }
 
         restartMatches.setOnClickListener {
-            displayMatches(view)
+            displayMatches()
         }
 
         return view
@@ -61,12 +61,10 @@ class HomeFragment : Fragment() {
         with(recyclerViewMatches) {
             layoutManager = LinearLayoutManager(view.context)
             adapter = MatchesAdapter(matches.toList().toTypedArray())
-
         }
-
     }
 
-    private fun displayMatches(view: View) {
+    private fun displayMatches() {
         viewModel.loadMatches()
     }
 

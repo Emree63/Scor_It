@@ -24,9 +24,10 @@
                 android:id="@+id/iconStatus"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="7dp" />
+                android:layout_marginBottom="7dp"
+                android:contentDescription="@string/imageNotFound" />
 
         </FrameLayout>
 

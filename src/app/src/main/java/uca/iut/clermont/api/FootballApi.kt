@@ -25,11 +25,11 @@ interface FootballApi {
     @GET("persons/{id}")
     suspend fun getPlayer(@Path("id") playerId: Int): PlayerResponse
 
-    @Headers("X-Auth-Token: 7814ffe5b0314b5291a287d32a178e57")
+    @Headers("X-Auth-Token: 621ef06e148542f98b4993a5442421eb")
     @GET("competitions")
     suspend fun getCompetitions(): CompetitionResponse
 
-    @Headers("X-Auth-Token: 7814ffe5b0314b5291a287d32a178e57")
+    @Headers("X-Auth-Token: 8f51b43de0444026bd3ec3484f082575")
     @GET("competitions/{id}")
     suspend fun getCompetition(@Path("id") id: Int): CompetitionResult
 
@@ -37,12 +37,12 @@ interface FootballApi {
     @GET("matches")
     suspend fun getMatches(): MatchResponse
 
-    @Headers("X-Auth-Token: 7814ffe5b0314b5291a287d32a178e57")
+    @Headers("X-Auth-Token: 621ef06e148542f98b4993a5442421eb")
     @GET("matches/{id}")
     suspend fun getMatch(@Path("id") id: Int): MatchResult
 
-    @Headers("X-Auth-Token: 7814ffe5b0314b5291a287d32a178e57")
-    @GET("matches/{id}/matches")
+    @Headers("X-Auth-Token: b002ff114afa41a590e2baef63d8c689")
+    @GET("competitions/{id}/matches")
     suspend fun getMatchesByCompetition(@Path("id") id: Int): MatchResponse
 
 }

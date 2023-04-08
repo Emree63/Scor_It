@@ -8,10 +8,16 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.model.Competition
+import uca.iut.clermont.view.adapter.MatchesAdapter
+import uca.iut.clermont.view.viewModel.DetailViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +25,8 @@ class DetailFragment : Fragment() {
 
     private var isLiked = false
     private lateinit var competition: Competition
+    private val viewModel: DetailViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,10 +38,33 @@ class DetailFragment : Fragment() {
 
         val id = arguments?.getInt("idItem")!!
 
-        //competition = (activity as MainActivity).manager.competitionsMgr.getItemById(id)!!
 
-        initializeView(view)
-        initRecyclerView(view)
+        viewModel.competition.observe(viewLifecycleOwner, Observer { comp ->
+            comp?.let {
+                competition = comp
+                initializeView(view)
+                initRecyclerView(view)
+            }
+        })
+
+        viewModel.loadCurrentCompetition(id)
+
+        viewModel.nbCompetitionMatches.observe(viewLifecycleOwner, Observer { comp ->
+            comp?.let {
+                initNumberMatches(view)
+            }
+        })
+
+        viewModel.loadNumberMatches(id)
+
+        viewModel.competitionMatches.observe(viewLifecycleOwner, Observer { competitions ->
+            competitions?.let {
+                initRecyclerView(view)
+            }
+        })
+
+
+        viewModel.loadMatches(id)
 
         return view;
     }
@@ -76,21 +107,24 @@ class DetailFragment : Fragment() {
 
         dateStart.text = formattedDate
 
-        /*nbMatches.text =
-            (activity as MainActivity).manager.matchesMgr.getNbItemsByCompetition(competition.name)
-                .toString()*/
     }
 
+    private fun initNumberMatches(view: View) {
+        val nbMatches = view.findViewById<TextView>(R.id.nbMatches)
+
+        nbMatches.text = viewModel.nbCompetitionMatches.value.toString()
+    }
 
     private fun initRecyclerView(view: View) {
-        /*val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
+        val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
         with(recyclerViewMatches) {
             layoutManager = LinearLayoutManager(view.context)
-            adapter = MatchesAdapter(
-                (activity as MainActivity).manager.matchesMgr.getItemsByCompetition(competition.name)
-                    .toList().toTypedArray()
-            )
-        }*/
+            adapter = viewModel.competitionMatches.value?.toList()?.let {
+                MatchesAdapter(
+                    it.toTypedArray()
+                )
+            }
+        }
 
     }
 }

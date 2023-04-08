@@ -66,7 +66,7 @@ class ApiManager : DataManager() {
 
         override suspend fun getItemsByCompetition(id: Int): List<Match> =
             coroutineScope {
-                val matches = footballApi.getMatches()
+                val matches = footballApi.getMatchesByCompetition(id)
                 return@coroutineScope matches.matches.map { it.toModel() }
             }
 
