@@ -2,7 +2,6 @@ package uca.iut.clermont.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uca.iut.clermont.R
@@ -34,7 +33,6 @@ class MatchesAdapter(private val recentMatches: Array<Match>) :
         }
 
         val date = recentMatches[position].date
-        date.add(Calendar.HOUR_OF_DAY, 2)
         val formatter = SimpleDateFormat("dd/MM/yyyy' 'HH:mm", Locale.US)
         val formattedDate = formatter.format(date.time)
 

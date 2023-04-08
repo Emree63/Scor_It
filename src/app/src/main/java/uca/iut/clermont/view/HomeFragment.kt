@@ -29,8 +29,10 @@ class HomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val text = view.findViewById<TextView>(R.id.textEmpty)
+        val buttonFavorite = view.findViewById<ImageButton>(R.id.buttonFavorite)
+        val restartMatches = view.findViewById<ImageButton>(R.id.restartMatches)
 
+        val text = view.findViewById<TextView>(R.id.textEmpty)
         viewModel.matches.observe(viewLifecycleOwner, Observer { matches ->
             matches?.let {
                 if (it.isNotEmpty()) {
@@ -41,12 +43,14 @@ class HomeFragment : Fragment() {
             }
         })
 
-        viewModel.loadMatches()
-
-        val buttonFavorite = view.findViewById<ImageButton>(R.id.buttonFavorite)
+        displayMatches(view)
 
         buttonFavorite.setOnClickListener {
             findNavController().navigate(R.id.favoriteFragment)
+        }
+
+        restartMatches.setOnClickListener {
+            displayMatches(view)
         }
 
         return view
@@ -60,6 +64,10 @@ class HomeFragment : Fragment() {
 
         }
 
+    }
+
+    private fun displayMatches(view: View) {
+        viewModel.loadMatches()
     }
 
 
