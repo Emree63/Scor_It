@@ -1,11 +1,16 @@
 package uca.iut.clermont.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "competitions")
 class Competition(
-    val id: Int,
-    val name: String,
-    val code: String,
-    val type: String,
-    val emblem: String,
-    val currentSeason: Season,
+    @PrimaryKey val id: Int,
+    @ColumnInfo val name: String,
+    @ColumnInfo val code: String,
+    @ColumnInfo val type: String,
+    @ColumnInfo val emblem: String,
+    @ColumnInfo val currentSeason: Season,
     val area: Area
 )

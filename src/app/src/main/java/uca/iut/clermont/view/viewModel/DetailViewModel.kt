@@ -9,12 +9,20 @@ import uca.iut.clermont.model.Competition
 import uca.iut.clermont.model.Match
 import java.util.*
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(
+    //val dao: CompetitionDao
+) : ViewModel() {
 
     val manager = ApiManager()
     val competition = MutableLiveData<Competition?>()
     val competitionMatches = MutableLiveData<List<Match>>()
     val nbCompetitionMatches = MutableLiveData<Int>()
+
+    /*fun insertCompetition(competition: Competition) =
+        viewModelScope.launch {
+            dao.insertCompetition(competition)
+        }
+    */
 
     fun loadCurrentCompetition(id: Int) = viewModelScope.launch {
         val result = manager.competitionsMgr.getItemById(id)
@@ -24,10 +32,11 @@ class DetailViewModel : ViewModel() {
     fun loadMatches(id: Int) = viewModelScope.launch {
 
         val matchResults = manager.matchesMgr.getItemsByCompetition(id)
-        competitionMatches.value = matchResults.filter { it.status != "TIMED" && it.status != "SCHEDULED" }
-            .apply { forEach { it.date.add(Calendar.HOUR_OF_DAY, 2) } }
-            .sortedBy { it.competition.name }
-            .sortedByDescending { it.date }
+        competitionMatches.value =
+            matchResults.filter { it.status != "TIMED" && it.status != "SCHEDULED" }
+                .apply { forEach { it.date.add(Calendar.HOUR_OF_DAY, 2) } }
+                .sortedBy { it.competition.name }
+                .sortedByDescending { it.date }
     }
 
     fun loadNumberMatches() = viewModelScope.launch {

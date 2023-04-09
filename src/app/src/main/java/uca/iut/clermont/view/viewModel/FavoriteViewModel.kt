@@ -7,10 +7,15 @@ import kotlinx.coroutines.launch
 import uca.iut.clermont.api.ApiManager
 import uca.iut.clermont.model.Competition
 
-class FavoriteViewModel : ViewModel() {
+class FavoriteViewModel(
+    //val dao: CompetitionDao
+) : ViewModel() {
 
     val manager = ApiManager()
     val competitions = MutableLiveData<List<Competition>>()
+
+    //fun getAllCompetitions() = dao.getAllCompetitions()
+    //.isLiveDate()
 
     fun loadCompetitions() = viewModelScope.launch {
         val result = manager.competitionsMgr.getItems()
