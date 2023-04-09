@@ -33,7 +33,7 @@ class DetailViewModel(
 
         val matchResults = manager.matchesMgr.getItemsByCompetition(id)
         competitionMatches.value =
-            matchResults.filter { it.status != "TIMED" && it.status != "SCHEDULED" }
+            matchResults.filter { it.status != "TIMED" && it.status != "SCHEDULED" && it.status != "POSTPONED" }
                 .apply { forEach { it.date.add(Calendar.HOUR_OF_DAY, 2) } }
                 .sortedBy { it.competition.name }
                 .sortedByDescending { it.date }
