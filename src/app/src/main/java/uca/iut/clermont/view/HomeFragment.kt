@@ -28,6 +28,8 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var searchBar: EditText
     private lateinit var searchAdapter: RecyclerView
+    private var searchList: MutableList<Competition> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -85,16 +87,12 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
     }
 
     private fun searchNames(query: String) {
-        val filteredCompetition = mutableListOf<Competition>()
-        if (query.isNotEmpty()) {
-            for (competition in viewModel.competitions.value!!) {
-                if (competition.name.lowercase()
-                        .contains(query.lowercase()) && filteredCompetition.size < 3
-                ) {
-                    filteredCompetition.add(competition)
-                }
-            }
-        }
+        val filteredCompetition = viewModel.competitions.value.orEmpty()
+            .asSequence()
+            .filter { it.name.lowercase().contains(query.lowercase()) }
+            .take(3)
+            .toMutableList()
+        searchList = filteredCompetition
         searchList(filteredCompetition, this)
     }
 
@@ -129,9 +127,8 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val competitions = viewModel.competitions.value!!
         val bundle = bundleOf(
-            "idItem" to competitions[position].id,
+            "idItem" to searchList[position].id,
             "fragmentId" to R.id.homeFragment
         )
         findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
