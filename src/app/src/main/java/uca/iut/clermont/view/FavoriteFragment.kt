@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
-import uca.iut.clermont.view.adapter.FavoritesAdapter
+import uca.iut.clermont.view.adapter.CompetitionsAdapter
 import uca.iut.clermont.view.viewModel.FavoriteViewModel
 
-class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
+class FavoriteFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
 
     private val viewModel: FavoriteViewModel by viewModels()
 
@@ -61,18 +61,21 @@ class FavoriteFragment : Fragment(), FavoritesAdapter.OnItemClickListener {
     private fun initRecyclerView(
         view: View,
         favorites: List<Competition>,
-        listener: FavoritesAdapter.OnItemClickListener
+        listener: CompetitionsAdapter.OnItemClickListener
     ) {
         val recyclerViewFavorites = view.findViewById<RecyclerView>(R.id.listFavorites)
         with(recyclerViewFavorites) {
             layoutManager = LinearLayoutManager(view.context)
-            adapter = FavoritesAdapter(favorites.toList().toTypedArray(), listener)
+            adapter = CompetitionsAdapter(favorites.toList().toTypedArray(), listener)
         }
     }
 
     override fun onItemClick(position: Int) {
         val competitions = viewModel.competitions.value!!
-        val bundle = bundleOf("idItem" to competitions[position].id)
+        val bundle = bundleOf(
+            "idItem" to competitions[position].id,
+            "fragmentId" to R.id.favoriteFragment
+        )
         findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
     }
 }

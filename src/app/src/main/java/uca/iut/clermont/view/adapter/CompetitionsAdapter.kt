@@ -10,11 +10,11 @@ import com.bumptech.glide.Glide
 import uca.iut.clermont.R
 import uca.iut.clermont.model.Competition
 
-class FavoritesAdapter(
+class CompetitionsAdapter(
     private val favoriteCompetition: Array<Competition>,
     private val listener: OnItemClickListener,
 ) :
-    RecyclerView.Adapter<FavoritesAdapter.FavoriteHolder>() {
+    RecyclerView.Adapter<CompetitionsAdapter.FavoriteHolder>() {
 
     inner class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 

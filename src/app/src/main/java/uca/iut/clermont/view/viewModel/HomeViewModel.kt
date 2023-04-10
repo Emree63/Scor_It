@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import uca.iut.clermont.api.ApiManager
+import uca.iut.clermont.model.Competition
 import uca.iut.clermont.model.Match
 import java.util.*
 
@@ -12,6 +13,7 @@ class HomeViewModel : ViewModel() {
 
     val manager = ApiManager()
     val matches = MutableLiveData<List<Match>?>()
+    val competitions = MutableLiveData<List<Competition>>()
 
     fun loadMatches() = viewModelScope.launch {
         val matchResults = manager.matchesMgr.getItems()
@@ -19,6 +21,11 @@ class HomeViewModel : ViewModel() {
             .apply { forEach { it.date.add(Calendar.HOUR_OF_DAY, 2) } }
             .sortedBy { it.competition.name }
             .sortedByDescending { it.date }
+    }
+
+    fun loadCompetitions() = viewModelScope.launch {
+        val result = manager.competitionsMgr.getItems()
+        competitions.value = result
     }
 
 }

@@ -38,7 +38,6 @@ class DetailFragment : Fragment() {
 
         val id = arguments?.getInt("idItem")!!
 
-
         viewModel.competition.observe(viewLifecycleOwner, Observer { comp ->
             comp?.let {
                 competition = comp
@@ -73,12 +72,15 @@ class DetailFragment : Fragment() {
         val buttonExit = view.findViewById<ImageButton>(R.id.buttonExit)
         val imageHeader = view.findViewById<ImageView>(R.id.imageDetail)
         val titleHeader = view.findViewById<TextView>(R.id.title)
-        val nbMatches = view.findViewById<TextView>(R.id.nbMatches)
         val dateEnd = view.findViewById<TextView>(R.id.dateEnd)
         val dateStart = view.findViewById<TextView>(R.id.dateStart)
 
+        val fragmentId = arguments?.getInt("fragmentId")
+
         buttonExit.setOnClickListener {
-            findNavController().navigate(R.id.favoriteFragment)
+            fragmentId?.let {
+                findNavController().navigate(fragmentId)
+            }
         }
 
         button.setOnClickListener {
