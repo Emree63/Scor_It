@@ -11,6 +11,6 @@ class Competition(
     @ColumnInfo val code: String,
     @ColumnInfo val type: String,
     @ColumnInfo val emblem: String,
-    @ColumnInfo val currentSeason: Season,
+    val currentSeason: Season,
     val area: Area
 )

@@ -1,11 +1,6 @@
 package uca.iut.clermont.api
 
-import AreaManager
-import CompetitionsManager
-import DataManager
-import MatchesManager
-import PeopleManager
-import TeamsManager
+
 import kotlinx.coroutines.coroutineScope
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

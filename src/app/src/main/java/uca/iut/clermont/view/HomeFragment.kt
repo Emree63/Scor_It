@@ -49,7 +49,7 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
         viewModel.matches.observe(viewLifecycleOwner, Observer { matches ->
             matches?.let {
                 if (it.isNotEmpty()) {
-                    initRecyclerView(view, it, this)
+                    initRecyclerView(view, it)
                 } else {
                     text.setText(R.string.noMatches)
                 }
@@ -76,6 +76,7 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
     private val textWatcher = object : TextWatcher {
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            // No need for the function
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -83,6 +84,7 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
         }
 
         override fun afterTextChanged(s: Editable?) {
+            // No need for the function
         }
     }
 
@@ -98,8 +100,7 @@ class HomeFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
 
     private fun initRecyclerView(
         view: View,
-        matches: List<Match>,
-        listener: CompetitionsAdapter.OnItemClickListener
+        matches: List<Match>
     ) {
         val recyclerViewMatches = view.findViewById<RecyclerView>(R.id.listRecentsMatches)
         with(recyclerViewMatches) {

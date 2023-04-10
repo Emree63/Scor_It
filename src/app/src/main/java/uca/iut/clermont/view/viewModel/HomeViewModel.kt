@@ -13,6 +13,7 @@ import java.util.*
 
 class HomeViewModel : ViewModel() {
 
+    val ERROR = "too many requests"
     val manager = ApiManager()
     val matches = MutableLiveData<List<Match>?>()
     val competitions = MutableLiveData<List<Competition>>()
@@ -25,7 +26,7 @@ class HomeViewModel : ViewModel() {
                 .sortedBy { it.competition.name }
                 .sortedByDescending { it.date }
         } catch (e: HttpException) {
-            Log.d(e.toString(),": too many requests")
+            Log.d(e.toString(),ERROR)
         }
     }
 
@@ -34,7 +35,7 @@ class HomeViewModel : ViewModel() {
             val result = manager.competitionsMgr.getItems()
             competitions.value = result
         } catch (e: HttpException) {
-            Log.d(e.toString(),": too many requests")
+            Log.d(e.toString(),ERROR)
         }
     }
 

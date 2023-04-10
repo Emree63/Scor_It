@@ -1,11 +1,6 @@
 package uca.iut.clermont.data
 
-import AreaManager
-import CompetitionsManager
-import DataManager
-import MatchesManager
-import PeopleManager
-import TeamsManager
+
 import uca.iut.clermont.model.*
 import java.util.*
 

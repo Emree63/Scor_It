@@ -1,4 +1,4 @@
-import uca.iut.clermont.model.*
+package uca.iut.clermont.model
 
 abstract class DataManager {
     abstract val areaMgr: AreaManager

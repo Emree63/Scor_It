@@ -15,9 +15,11 @@ import uca.iut.clermont.R
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import uca.iut.clermont.application.ScorItApplication
 import uca.iut.clermont.model.Competition
 import uca.iut.clermont.view.adapter.MatchesAdapter
 import uca.iut.clermont.view.viewModel.DetailViewModel
+import uca.iut.clermont.view.viewModel.ViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,8 +27,9 @@ class DetailFragment : Fragment() {
 
     private var isLiked = false
     private lateinit var competition: Competition
-    private val viewModel: DetailViewModel by viewModels()
-
+    private val viewModel: DetailViewModel by viewModels {
+        ViewModelFactory((requireActivity().application as ScorItApplication).db.competitionDao())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +39,7 @@ class DetailFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
+        val likeButton = view.findViewById<ImageButton>(R.id.buttonLike)
         val id = arguments?.getInt("idItem")!!
 
         viewModel.competition.observe(viewLifecycleOwner, Observer { comp ->
@@ -54,6 +58,24 @@ class DetailFragment : Fragment() {
             }
         })
 
+        viewModel.check(id).observe(viewLifecycleOwner, Observer { competition ->
+            competition?.let {
+                isLiked = true
+                likeButton.setImageResource(R.drawable.full_like)
+            }
+        })
+
+        likeButton.setOnClickListener {
+            if (isLiked) {
+                viewModel.deleteCompetition(competition)
+                likeButton.setImageResource(R.drawable.empty_like)
+            } else {
+                viewModel.insertCompetition(competition)
+                likeButton.setImageResource(R.drawable.full_like)
+            }
+            isLiked = !isLiked
+        }
+
         viewModel.competitionMatches.observe(viewLifecycleOwner, Observer { competitions ->
             competitions?.let {
                 initRecyclerView(view)
@@ -61,14 +83,12 @@ class DetailFragment : Fragment() {
             }
         })
 
-
         viewModel.loadMatches(id)
 
         return view;
     }
 
     private fun initializeView(view: View) {
-        val button = view.findViewById<ImageButton>(R.id.buttonLike)
         val buttonExit = view.findViewById<ImageButton>(R.id.buttonExit)
         val imageHeader = view.findViewById<ImageView>(R.id.imageDetail)
         val titleHeader = view.findViewById<TextView>(R.id.title)
@@ -81,11 +101,6 @@ class DetailFragment : Fragment() {
             fragmentId?.let {
                 findNavController().navigate(fragmentId)
             }
-        }
-
-        button.setOnClickListener {
-            isLiked = !isLiked
-            button.setImageResource(if (isLiked) R.drawable.full_like else R.drawable.empty_like)
         }
 
         Glide.with(view.context)
@@ -126,6 +141,5 @@ class DetailFragment : Fragment() {
                 )
             }
         }
-
     }
 }

@@ -14,13 +14,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
+import uca.iut.clermont.application.ScorItApplication
 import uca.iut.clermont.model.Competition
+import uca.iut.clermont.model.Match
 import uca.iut.clermont.view.adapter.CompetitionsAdapter
 import uca.iut.clermont.view.viewModel.FavoriteViewModel
+import uca.iut.clermont.view.viewModel.ViewModelFactory
 
 class FavoriteFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
 
-    private val viewModel: FavoriteViewModel by viewModels()
+    private var favorites: List<Competition> = mutableListOf()
+
+    private val viewModel: FavoriteViewModel by viewModels {
+        ViewModelFactory((requireActivity().application as ScorItApplication).db.competitionDao())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,13 +35,13 @@ class FavoriteFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
-        viewModel.competitions.observe(viewLifecycleOwner, Observer { competitions ->
+
+        viewModel.getAllCompetitions().observe(viewLifecycleOwner, Observer { competitions ->
             competitions?.let {
+                favorites = competitions
                 initRecyclerView(view, competitions, this)
             }
         })
-
-        viewModel.loadCompetitions()
 
         initializeView(view)
 
@@ -71,11 +78,11 @@ class FavoriteFragment : Fragment(), CompetitionsAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val competitions = viewModel.competitions.value!!
         val bundle = bundleOf(
-            "idItem" to competitions[position].id,
+            "idItem" to favorites[position].id,
             "fragmentId" to R.id.favoriteFragment
         )
         findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
     }
+
 }

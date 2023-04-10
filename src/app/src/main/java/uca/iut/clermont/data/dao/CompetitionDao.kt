@@ -13,10 +13,13 @@ interface CompetitionDao {
     @Delete
     fun deleteCompetition(competition: Competition)
 
-    @Query("SELECT * FROM competition")
+    @Query("SELECT * FROM competitions")
     fun getAllCompetitions(): Flow<List<Competition>>
 
     @Insert
     fun insertCompetition(competition: Competition)
+
+    @Query("SELECT * FROM competitions WHERE id=:id")
+    fun getCompetitionById(id: Int): Flow<Competition?>
 
 }
