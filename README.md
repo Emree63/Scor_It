@@ -246,7 +246,7 @@ StubManager --|> DataManager
 
 - :warning: [**Partie 6**](.drone.yml) : **Persistance des donnéees**
 
-- :x: [**Partie 7**](.drone.yml) : **Réalisation de la barre de recherche**
+- :white_check_mark: [**Partie 7**](.drone.yml) : **Réalisation de la barre de recherche**
 
 - :x: [**Partie 8**](.drone.yml) : **Affichage des images SVG**
 
