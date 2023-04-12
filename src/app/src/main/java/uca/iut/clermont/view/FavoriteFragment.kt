@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import uca.iut.clermont.R
 import uca.iut.clermont.application.ScorItApplication
 import uca.iut.clermont.model.Competition
-import uca.iut.clermont.model.Match
 import uca.iut.clermont.view.adapter.CompetitionsAdapter
 import uca.iut.clermont.view.viewModel.FavoriteViewModel
 import uca.iut.clermont.view.viewModel.ViewModelFactory
