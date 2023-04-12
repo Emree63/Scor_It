@@ -244,7 +244,7 @@ StubManager --|> DataManager
 
 - :white_check_mark: [**Partie 5**](.drone.yml) : **Conception et réalisation du Model**
 
-- :warning: [**Partie 6**](.drone.yml) : **Persistance des donnéees**
+- :white_check_mark: [**Partie 6**](.drone.yml) : **Persistance des donnéees**
 
 - :white_check_mark: [**Partie 7**](.drone.yml) : **Réalisation de la barre de recherche**
 
